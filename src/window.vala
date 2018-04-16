@@ -13,5 +13,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     public MainWindow(Gtk.Application app) {
         set_application(app);
+
+        set_default_size(800, 600);
     }
 }
