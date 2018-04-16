@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<component type="desktop-application">
+  <id>write-as-gtk</id>
+  <name>write.as</name>
+  <summary>Spread your ideas</summary>
+
+  <description>
+    <p>A Distraction Free Writing Tool:</p>
+    <p>We eliminate notifications, streams, likes, and commentary so you can focus on your words. Enjoy a clear mind and a beautifully simple space to write your thoughts.</p>
+
+    <p>Publish Articles:</p>
+    <p>Write your apps in the privacy and convenience of your desktop of choice with this native app, all without signing up. Write something, press publish, and share the link to your new post — that's all there is to it!</p>
+
+    <p>Privacy By Default:</p>
+    <p>Focus on your ideas — not who's listening. We go farther than the rest to protect your privacy, and even make it easy to publish under multiple pen names if you want.</p>
+  </description>
+
+  <developer_name>A Bunch Tell LLC</developer>
+  <url type="homepage">https://write.as/</url>
+  <url type="help">https://write.as/contact</url>
+  <url type="bugtracker">https://code.as/writeas/writeas-gtk/issues</url>
+  <update_contact>matt@write.as</update_contact>
+
+  <provides>
+    <binary>write-as-gtk</binary>
+  </provides>
+</components>
