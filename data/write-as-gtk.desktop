@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=write.as
+Comment=Spread your ideas
+Exec=write.as-gtk
+Icon=write-as
+Terminal=false
+Categories=Network;GTK;Development;Office;Utility;Publishing;TextTools;TextEditor;
+Keywords=blog;pastebin;snippets;code;publish;
+StartupNotify=true
+
