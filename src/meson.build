@@ -1,5 +1,6 @@
 executable('write-as-gtk',
     'application.vala',
+    'window.vala',
 
     c_args: ['-include', 'config.h'],
     link_args: '-lm',

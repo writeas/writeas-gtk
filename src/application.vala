@@ -8,7 +8,7 @@ public class WriteAs.Application : Gtk.Application {
 
     public override void activate() {
         if (get_windows().length() == 0)
-            new Gtk.ApplicationWindow(this).show_all();
+            new WriteAs.MainWindow(this).show_all();
     }
 
     public static int main(string[] args) {
