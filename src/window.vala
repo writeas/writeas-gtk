@@ -7,6 +7,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         construct_toolbar();
 
         canvas = new Gtk.TextView();
+        canvas.margin = 20;
         add(canvas);
     }
 
