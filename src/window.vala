@@ -7,6 +7,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     construct {
         construct_toolbar();
+        build_keyboard_shortcuts();
 
         canvas = new Gtk.TextView();
         add(canvas);
@@ -66,8 +67,12 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
         var styles = option.get_style_context();
         var provider = new Gtk.CssProvider();
-        provider.load_from_data("* {font: %s;}".printf(families));
-        styles.add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        try {
+            provider.load_from_data("* {font: %s;}".printf(families));
+            styles.add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        } catch (Error e) {
+            warning(e.message);
+        }
 
         menu.add(option);
     }
@@ -96,4 +101,59 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             warning(e.message);
         }
     }
+
+    /* --- */
+
+    private void build_keyboard_shortcuts() {
+        /* These operations are not exposed to the UI as buttons,
+            as most people are very familiar with them and they are not the
+            focus of this app. */
+        var accels = new Gtk.AccelGroup();
+
+        accels.connect(Gdk.Key.S, Gdk.ModifierType.CONTROL_MASK,
+                Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED,
+                (g,a,k,m) => save_as());
+        accels.connect(Gdk.Key.S,
+                Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK,
+                Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED,
+                (g,a,k,m) => save_as());
+        accels.connect(Gdk.Key.O, Gdk.ModifierType.CONTROL_MASK,
+                Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED, (g, a, k, m) => {
+            try {
+                uint8[] text;
+                var file = prompt_file(Gtk.FileChooserAction.OPEN, _("_Open"));
+                file.load_contents(null, out text, null);
+                canvas.buffer.text = (string) text;
+            } catch (Error e) {
+                // It's fine...
+            }
+            return true;
+        });
+
+        add_accel_group(accels);
+    }
+
+    private bool save_as() {
+        // TODO
+        return true;
+    }
+
+    private File prompt_file(Gtk.FileChooserAction mode, string action)
+            throws UserCancellable {
+        var file_chooser = new Gtk.FileChooserDialog(action, this, mode,
+              _("_Cancel"), Gtk.ResponseType.CANCEL,
+              action, Gtk.ResponseType.ACCEPT);
+
+        file_chooser.select_multiple = false;
+        var filter = new Gtk.FileFilter();
+        filter.add_mime_type("text/plain");
+        file_chooser.set_filter(filter);
+
+        var resp = file_chooser.run();
+        file_chooser.close();
+        if (resp == Gtk.ResponseType.ACCEPT) return file_chooser.get_file();
+        else throw new UserCancellable.USER_CANCELLED("FileChooserDialog");
+    }
 }
+
+errordomain WriteAs.UserCancellable {USER_CANCELLED}
