@@ -47,7 +47,13 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
             var css = "";
             if (dark_mode) {
-                css = "* {background: black; color: white;}";
+                // Try to detect whether the system provided a better dark mode.
+                var text_color = styles.get_color(Gtk.StateFlags.ACTIVE);
+                double h, s, v;
+                Gtk.rgb_to_hsv(text_color.red, text_color.green, text_color.blue,
+                        out h, out s, out v);
+
+                if (v < 0.5) css = "* {background: black; color: white;}";
             }
             cur_styles = new Gtk.CssProvider();
             cur_styles.load_from_data(css);
