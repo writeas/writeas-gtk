@@ -32,6 +32,18 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         header.show_close_button = true;
         set_titlebar(header);
 
+        var publish_button = new Gtk.Button.from_icon_name("document-send",
+                Gtk.IconSize.SMALL_TOOLBAR);
+        publish_button.clicked.connect(() => {
+            try {
+                this.publish();
+                canvas.buffer.text = "";
+            } catch (Error err) {
+                canvas.buffer.text = err.message;
+            }
+        });
+        header.pack_end(publish_button);
+
         var darkmode_button = new Gtk.ToggleButton();
         darkmode_button.tooltip_text = _("Toggle dark theme");
         // NOTE the fallback icon is a bit of a meaning stretch, but it works.
