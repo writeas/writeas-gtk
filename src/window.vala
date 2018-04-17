@@ -11,6 +11,12 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
         canvas = new Gtk.TextView();
         add(canvas);
+        canvas.event_after.connect((evt) => {
+            // TODO This word count algorithm may be quite naive
+            //      and could do improvement.
+            var word_count = canvas.buffer.text.split(" ").length;
+            title = ngettext("%i word","%i words",word_count).printf(word_count);
+        });
 
         adjust_text_style();
     }
@@ -23,7 +29,6 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     private void construct_toolbar() {
         var header = new Gtk.HeaderBar();
-        header.title = "";
         header.show_close_button = true;
         set_titlebar(header);
 
