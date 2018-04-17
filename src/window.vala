@@ -107,6 +107,48 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         }
     }
 
+    private async void publish() throws Error {
+        // Could use libsoup, but I'll exercise the commandline interface.
+        // Mostly because it already has Tor integration.
+        IOChannel stdin, stdout, stderr;
+        yield spawn_commandline_with_pipes({"writeas"},
+                out stdin, out stdout, out stderr);
+
+        while (stdin.write_chars((char[]) canvas.buffer.text.data, null)
+                != IOStatus.AGAIN) {}
+        if (stdin.shutdown(true) != IOStatus.NORMAL)
+            throw new PublishError.IO(_("Unknown IO Error!"));
+
+        string errmsg;
+        stderr.read_to_end(out errmsg, null);
+        errmsg = errmsg.strip();
+        info("Errors were: %s", errmsg);
+        if (errmsg == "" ||
+                // This error is fine, we'll show the browser anyways.
+                errmsg.has_prefix("writeas: Didn't copy to clipboard")) {
+            throw new PublishError.UPSTREAM(errmsg);
+        }
+
+        string url;
+        stdout.read_to_end(out url, null);
+        url = url.strip();
+        var browser = AppInfo.get_default_for_uri_scheme("https");
+        var uris = new List<string>();
+        uris.append(url);
+        browser.launch_uris(uris, null);
+    }
+
+    private static async void spawn_commandline_with_pipes(string[] cmd,
+            out IOChannel stdin = null, out IOChannel stdout = null,
+            out IOChannel stderr = null, out int pid = null) throws Error {
+        int stdin_id, stdout_id, stderr_id;
+        Process.spawn_async_with_pipes(null, cmd, null,
+                SpawnFlags.SEARCH_PATH, null, out pid,
+                out stdin_id, out stdout_id, out stderr_id);
+        stdin = new IOChannel.unix_new(stdin_id);
+        stdout = new IOChannel.unix_new(stdout_id);
+        stderr = new IOChannel.unix_new(stderr_id);
+    }
     /* --- */
 
     private void build_keyboard_shortcuts() {
@@ -172,3 +214,4 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 }
 
 errordomain WriteAs.UserCancellable {USER_CANCELLED}
+errordomain WriteAs.PublishError {IO, UPSTREAM}
