@@ -2,13 +2,16 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private Gtk.TextView canvas;
 
     private bool dark_mode = false;
+    private string font = "Lora, 'Palatino Linotype',"
+            + "'Book Antiqua', 'New York', 'DejaVu serif', serif";
 
     construct {
         construct_toolbar();
 
         canvas = new Gtk.TextView();
-        canvas.margin = 20;
         add(canvas);
+
+        adjust_text_style();
     }
 
     public MainWindow(Gtk.Application app) {
@@ -38,6 +41,33 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             adjust_text_style();
         });
         header.pack_end(darkmode_button);
+
+        var fonts = new Gtk.MenuButton();
+        fonts.image = new Gtk.Image.from_icon_name("font-x-generic", Gtk.IconSize.SMALL_TOOLBAR);
+        fonts.popup = new Gtk.Menu();
+        header.pack_start(fonts);
+
+        build_fontoption(fonts.popup, _("Serif"), font);
+        build_fontoption(fonts.popup, _("Sans-serif"), "'Open Sans', 'Segoe UI',"
+                + "Tahoma, Arial, sans-serif");
+        build_fontoption(fonts.popup, _("Monospace"), "Hack, consolas," +
+                "Menlo-Regular, Menlo, Monaco, 'ubuntu mono', monospace");
+        fonts.popup.show_all();
+    }
+
+    private void build_fontoption(Gtk.Menu menu, string label, string families) {
+        var option = new Gtk.MenuItem.with_label(label);
+        option.activate.connect(() => {
+            this.font = families;
+            adjust_text_style();
+        });
+
+        var styles = option.get_style_context();
+        var provider = new Gtk.CssProvider();
+        provider.load_from_data("* {font: %s;}".printf(families));
+        styles.add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        menu.add(option);
     }
 
     private Gtk.CssProvider cur_styles = null;
@@ -46,7 +76,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             var styles = canvas.get_style_context();
             if (cur_styles != null) styles.remove_provider(cur_styles);
 
-            var css = "";
+            var css = "* {font: %s; padding: 20px;}".printf(font);
             if (dark_mode) {
                 // Try to detect whether the system provided a better dark mode.
                 var text_color = styles.get_color(Gtk.StateFlags.ACTIVE);
