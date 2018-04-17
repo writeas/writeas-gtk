@@ -120,10 +120,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         accels.connect(Gdk.Key.O, Gdk.ModifierType.CONTROL_MASK,
                 Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED, (g, a, k, m) => {
             try {
-                uint8[] text;
-                var file = prompt_file(Gtk.FileChooserAction.OPEN, _("_Open"));
-                file.load_contents(null, out text, null);
-                canvas.buffer.text = (string) text;
+                open_file(prompt_file(Gtk.FileChooserAction.OPEN, _("_Open")));
             } catch (Error e) {
                 // It's fine...
             }
@@ -160,6 +157,12 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         file_chooser.close();
         if (resp == Gtk.ResponseType.ACCEPT) return file_chooser.get_file();
         else throw new UserCancellable.USER_CANCELLED("FileChooserDialog");
+    }
+
+    public void open_file(File file) throws Error {
+        uint8[] text;
+        file.load_contents(null, out text, null);
+        canvas.buffer.text = (string) text;
     }
 }
 
