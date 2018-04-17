@@ -27,6 +27,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         set_titlebar(header);
 
         var darkmode_button = new Gtk.ToggleButton();
+        darkmode_button.tooltip_text = _("Toggle dark theme");
         // NOTE the fallback icon is a bit of a meaning stretch, but it works.
         var icon_theme = Gtk.IconTheme.get_default();
         darkmode_button.image = new Gtk.Image.from_icon_name(
@@ -43,6 +44,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         header.pack_end(darkmode_button);
 
         var fonts = new Gtk.MenuButton();
+        fonts.tooltip_text = _("Change document font");
         fonts.image = new Gtk.Image.from_icon_name("font-x-generic", Gtk.IconSize.SMALL_TOOLBAR);
         fonts.popup = new Gtk.Menu();
         header.pack_start(fonts);
