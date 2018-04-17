@@ -1,4 +1,7 @@
-project('write-as-gtk', ['vala', 'c'], meson_version: '>=0.40.1')
+project('write-as-gtk', ['vala', 'c'],
+    version: '0.1',
+    license: 'GNU',
+    meson_version: '>=0.40.1')
 
 i18n = import('i18n')
 conf = configuration_data()
