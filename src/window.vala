@@ -134,7 +134,14 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     }
 
     private bool save_as() {
-        // TODO
+        try {
+        var file = prompt_file(Gtk.FileChooserAction.SAVE, _("_Save as"));
+        file.replace_contents(canvas.buffer.text.data, null, false,
+                FileCreateFlags.PRIVATE | FileCreateFlags.REPLACE_DESTINATION,
+                null);
+        } catch (Error e) {
+            // It's fine...
+        }
         return true;
     }
 
