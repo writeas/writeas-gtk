@@ -96,7 +96,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         build_fontoption(fonts.popup, _("Serif"), "serif", font);
         build_fontoption(fonts.popup, _("Sans-serif"), "sans",
                 "'Open Sans', 'Segoe UI', Tahoma, Arial, sans-serif");
-        build_fontoption(fonts.popup, _("Monospace"), "mono", "Hack, consolas," +
+        build_fontoption(fonts.popup, _("Monospace"), "wrap", "Hack, consolas," +
                 "Menlo-Regular, Menlo, Monaco, 'ubuntu mono', monospace");
         fonts.popup.show_all();
     }
