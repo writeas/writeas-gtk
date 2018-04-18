@@ -66,7 +66,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             title = _("Publishing post…");
             canvas.sensitive = false;
             publish.begin((obj, res) => {
-                canvas.buffer.text = publish.end(res);
+                canvas.buffer.text += "\n\n" + publish.end(res);
                 canvas.sensitive = true;
             });
         });
@@ -98,7 +98,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         build_fontoption(fonts.popup, _("Serif"), "serif", font);
         build_fontoption(fonts.popup, _("Sans-serif"), "sans",
                 "'Open Sans', 'Segoe UI', Tahoma, Arial, sans-serif");
-        build_fontoption(fonts.popup, _("Monospace"), "mono", "Hack, consolas," +
+        build_fontoption(fonts.popup, _("Monospace"), "wrap", "Hack, consolas," +
                 "Menlo-Regular, Menlo, Monaco, 'ubuntu mono', monospace");
         fonts.popup.show_all();
     }
