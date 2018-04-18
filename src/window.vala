@@ -10,9 +10,11 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         construct_toolbar();
         build_keyboard_shortcuts();
 
+        var scrolled = new Gtk.ScrolledWindow(null, null);
         canvas = new Gtk.TextView();
         canvas.wrap_mode = Gtk.WrapMode.WORD_CHAR;
-        add(canvas);
+        scrolled.add(canvas);
+        add(scrolled);
 
         var text_changed = false;
         canvas.event_after.connect((evt) => {
