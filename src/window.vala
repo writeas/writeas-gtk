@@ -4,6 +4,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private bool dark_mode = false;
     private string font = "Lora, 'Palatino Linotype',"
             + "'Book Antiqua', 'New York', 'DejaVu serif', serif";
+    private string fontstyle = "serif";
 
     construct {
         construct_toolbar();
@@ -80,18 +81,20 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         fonts.popup = new Gtk.Menu();
         header.pack_start(fonts);
 
-        build_fontoption(fonts.popup, _("Serif"), font);
-        build_fontoption(fonts.popup, _("Sans-serif"), "'Open Sans', 'Segoe UI',"
-                + "Tahoma, Arial, sans-serif");
-        build_fontoption(fonts.popup, _("Monospace"), "Hack, consolas," +
+        build_fontoption(fonts.popup, _("Serif"), "serif", font);
+        build_fontoption(fonts.popup, _("Sans-serif"), "sans",
+                "'Open Sans', 'Segoe UI', Tahoma, Arial, sans-serif");
+        build_fontoption(fonts.popup, _("Monospace"), "mono", "Hack, consolas," +
                 "Menlo-Regular, Menlo, Monaco, 'ubuntu mono', monospace");
         fonts.popup.show_all();
     }
 
-    private void build_fontoption(Gtk.Menu menu, string label, string families) {
+    private void build_fontoption(Gtk.Menu menu,
+            string label, string fontstyle, string families) {
         var option = new Gtk.MenuItem.with_label(label);
         option.activate.connect(() => {
             this.font = families;
+            this.fontstyle = fontstyle;
             adjust_text_style();
         });
 
@@ -138,7 +141,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         // Send the request
         var req = new Soup.Message("POST", "https://write.as/api/posts");
         // TODO specify font.
-        var req_body = "{\"body\": \"%s\"}".printf(canvas.buffer.text);
+        var req_body = "{\"body\": \"%s\", \"font\": \"%s\"}".printf(
+                canvas.buffer.text, fontstyle);
         req.set_request("application/json", Soup.MemoryUse.COPY, req_body.data);
         try {
             var resp = yield session.send_async(req);
