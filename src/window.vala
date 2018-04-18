@@ -35,12 +35,12 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         var publish_button = new Gtk.Button.from_icon_name("document-send",
                 Gtk.IconSize.SMALL_TOOLBAR);
         publish_button.clicked.connect(() => {
-            try {
-                this.publish();
-                canvas.buffer.text = "";
-            } catch (Error err) {
-                canvas.buffer.text = err.message;
-            }
+            title = _("Publishing post…");
+            canvas.sensitive = false;
+            publish.begin((obj, res) => {
+                canvas.buffer.text = publish.end(res);
+                canvas.sensitive = true;
+            });
         });
         header.pack_end(publish_button);
 
@@ -119,47 +119,38 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         }
     }
 
-    private async void publish() throws Error {
-        // Could use libsoup, but I'll exercise the commandline interface.
-        // Mostly because it already has Tor integration.
-        IOChannel stdin, stdout, stderr;
-        yield spawn_commandline_with_pipes({"writeas"},
-                out stdin, out stdout, out stderr);
+    private async string publish() {
+        var session = new Soup.Session();
 
-        while (stdin.write_chars((char[]) canvas.buffer.text.data, null)
-                != IOStatus.AGAIN) {}
-        if (stdin.shutdown(true) != IOStatus.NORMAL)
-            throw new PublishError.IO(_("Unknown IO Error!"));
+        // Send the request
+        var req = new Soup.Message("POST", "https://write.as/api/posts");
+        // TODO specify font.
+        var req_body = "{\"body\": \"%s\"}".printf(canvas.buffer.text);
+        req.set_request("application/json", Soup.MemoryUse.COPY, req_body.data);
+        try {
+            var resp = yield session.send_async(req);
 
-        string errmsg;
-        stderr.read_to_end(out errmsg, null);
-        errmsg = errmsg.strip();
-        info("Errors were: %s", errmsg);
-        if (errmsg == "" ||
-                // This error is fine, we'll show the browser anyways.
-                errmsg.has_prefix("writeas: Didn't copy to clipboard")) {
-            throw new PublishError.UPSTREAM(errmsg);
+            // Handle the response
+            if (req.status_code != 201)
+                return _("Error code: HTTP %u").printf(req.status_code);
+            var json = new Json.Parser();
+            json.load_from_stream(resp);
+            var data = json.get_root().get_object().get_object_member("data");
+            var url = "https://write.as/" + data.get_string_member("id");
+
+            Gtk.Clipboard.get_default(get_display()).set_text(url, -1);
+
+            // Open it in the browser
+            var browser = AppInfo.get_default_for_uri_scheme("https");
+            var urls = new List<string>();
+            urls.append(url);
+            browser.launch_uris(urls, null);
+
+            return _("The link to your published article has been copied into your clipboard for you.");
+        } catch (Error err) {
+            return _("Failed to upload post! Are you connected to the Internet?")
+                    + "\n\n" + err.message;
         }
-
-        string url;
-        stdout.read_to_end(out url, null);
-        url = url.strip();
-        var browser = AppInfo.get_default_for_uri_scheme("https");
-        var uris = new List<string>();
-        uris.append(url);
-        browser.launch_uris(uris, null);
-    }
-
-    private static async void spawn_commandline_with_pipes(string[] cmd,
-            out IOChannel stdin = null, out IOChannel stdout = null,
-            out IOChannel stderr = null, out int pid = null) throws Error {
-        int stdin_id, stdout_id, stderr_id;
-        Process.spawn_async_with_pipes(null, cmd, null,
-                SpawnFlags.SEARCH_PATH, null, out pid,
-                out stdin_id, out stdout_id, out stderr_id);
-        stdin = new IOChannel.unix_new(stdin_id);
-        stdout = new IOChannel.unix_new(stdout_id);
-        stderr = new IOChannel.unix_new(stderr_id);
     }
     /* --- */
 
