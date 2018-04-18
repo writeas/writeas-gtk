@@ -64,7 +64,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             title = _("Publishing post…");
             canvas.sensitive = false;
             publish.begin((obj, res) => {
-                canvas.buffer.text = publish.end(res);
+                canvas.buffer.text += "\n\n" + publish.end(res);
                 canvas.sensitive = true;
             });
         });
