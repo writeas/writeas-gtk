@@ -10,12 +10,17 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         build_keyboard_shortcuts();
 
         canvas = new Gtk.TextView();
+        canvas.wrap_mode = Gtk.WrapMode.WORD_CHAR;
         add(canvas);
         canvas.event_after.connect((evt) => {
             // TODO This word count algorithm may be quite naive
             //      and could do improvement.
             var word_count = canvas.buffer.text.split(" ").length;
             title = ngettext("%i word","%i words",word_count).printf(word_count);
+
+            draft_file().replace_contents(canvas.buffer.text.data, null, false,
+                FileCreateFlags.PRIVATE | FileCreateFlags.REPLACE_DESTINATION,
+                null);
         });
 
         adjust_text_style();
@@ -23,8 +28,16 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     public MainWindow(Gtk.Application app) {
         set_application(app);
+        try {
+            open_file(draft_file());
+        } catch (Error err) {/* It's fine... */}
 
         set_default_size(800, 600);
+    }
+
+    private static File draft_file() {
+        var home = File.new_for_path(Environment.get_home_dir());
+        return home.get_child(".writeas-draft.txt");
     }
 
     private void construct_toolbar() {
