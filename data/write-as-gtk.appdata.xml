@@ -26,4 +26,9 @@
   <provides>
     <binary>write-as-gtk</binary>
   </provides>
+
+  <!-- TODO Add the screenshots to this metadata,
+        but for that we need them publicly accessible online. -->
+  <!-- Once that's done, it's a simple matter of following
+        https://www.freedesktop.org/software/appstream/docs/sect-Metadata-Application.html -->
 </components>
