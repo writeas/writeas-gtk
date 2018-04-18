@@ -217,4 +217,3 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 }
 
 errordomain WriteAs.UserCancellable {USER_CANCELLED}
-errordomain WriteAs.PublishError {IO, UPSTREAM}
