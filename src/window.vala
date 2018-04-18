@@ -5,6 +5,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private string font = "Lora, 'Palatino Linotype',"
             + "'Book Antiqua', 'New York', 'DejaVu serif', serif";
     private string fontstyle = "serif";
+    private bool text_changed = false;
 
     construct {
         construct_toolbar();
@@ -16,7 +17,6 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         scrolled.add(canvas);
         add(scrolled);
 
-        var text_changed = false;
         canvas.event_after.connect((evt) => {
             // TODO This word count algorithm may be quite naive
             //      and could do improvement.
@@ -150,37 +150,29 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     }
 
     private async string publish() {
-        var session = new Soup.Session();
-
-        // Send the request
-        var req = new Soup.Message("POST", "https://write.as/api/posts");
-        // TODO specify font.
-        var req_body = "{\"body\": \"%s\", \"font\": \"%s\"}".printf(
-                canvas.buffer.text, fontstyle);
-        req.set_request("application/json", Soup.MemoryUse.COPY, req_body.data);
         try {
-            var resp = yield session.send_async(req);
+            if (text_changed) {;
+            draft_file().replace_contents(canvas.buffer.text.data, null, false,
+                FileCreateFlags.PRIVATE | FileCreateFlags.REPLACE_DESTINATION,
+                null);
+            text_changed = false;
+            }
 
-            // Handle the response
-            if (req.status_code != 201)
-                return _("Error code: HTTP %u").printf(req.status_code);
-            var json = new Json.Parser();
-            json.load_from_stream(resp);
-            var data = json.get_root().get_object().get_object_member("data");
-            var url = "https://write.as/" + data.get_string_member("id");
-
-            Gtk.Clipboard.get_default(get_display()).set_text(url, -1);
+            var cmd = "sh -c 'cat ~/.writeas-draft.txt | writeas'";
+            string stdout, stderr;
+            int status;
+            Process.spawn_command_line_sync(cmd,
+                    out stdout, out stderr, out status);
 
             // Open it in the browser
             var browser = AppInfo.get_default_for_uri_scheme("https");
             var urls = new List<string>();
-            urls.append(url);
+            urls.append(stdout.strip());
             browser.launch_uris(urls, null);
 
-            return _("The link to your published article has been copied into your clipboard for you.");
+            return stderr.strip();
         } catch (Error err) {
-            return _("Failed to upload post! Are you connected to the Internet?")
-                    + "\n\n" + err.message;
+            return err.message;
         }
     }
     /* --- */
