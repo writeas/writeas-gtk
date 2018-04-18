@@ -1,0 +1,26 @@
+Source: write-as-gtk
+Section: x11
+Priority: extra
+Maintainer: Adrian Cochrane <alcinnz@lavabit.com>
+Build-Depends: meson,
+               deb-helper (>= 9),
+               libgtk-3-dev,
+               valac (>= 0.26),
+               libjson-glib-dev (>= 1.1.2),
+               libsoup2.4-dev (>= 2.52.2)
+Standards-Version: 3.9.3
+
+Package: write-as-gtk
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: A Distraction Free Writing Tool
+ 
+ We eliminate notifications, streams, likes, and commentary so you can focus on your words. Enjoy a clear mind and a beautifully simple space to write your thoughts.
+ 
+ Publish Articles
+ 
+ Write your apps in the privacy and convenience of your desktop of choice with this native app, all without signing up. Write something, press publish, and share the link to your new post — that's all there is to it!
+
+ Privacy By Default
+ 
+ Focus on your ideas — not who's listening. We go farther than the rest to protect your privacy, and even make it easy to publish under multiple pen names if you want.
