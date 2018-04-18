@@ -19,3 +19,11 @@ any FreeDesktop.Org compatible system using:
 This will install the executable file and the metadata required to integrate with
 those desktops. It also installs metadata to be collected by package repositories
 which integrate with certain package managers for richer presentation of apps.
+
+## Packaging
+You can package Write.as GTK for Debian/Apt-based systems by running in this
+repository's root directory:
+
+    dpkg-buildpackage -us -uc
+
+This'll give you a .deb file in the parent directory.
