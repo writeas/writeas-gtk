@@ -27,8 +27,20 @@
     <binary>write-as-gtk</binary>
   </provides>
 
-  <!-- TODO Add the screenshots to this metadata,
-        but for that we need them publicly accessible online. -->
-  <!-- Once that's done, it's a simple matter of following
-        https://www.freedesktop.org/software/appstream/docs/sect-Metadata-Application.html -->
+  <screenshots>
+    <screenshot type="default">
+      <caption>The Write.as editor.</caption>
+      <image type="source">https://write.as/img/screens/gtk/serif.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The Write.as editor in dark mode.</caption>
+      <image type="source">https://write.as/img/screens/gtk/serif-dark.png</image>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://write.as/img/screens/gtk/sans.png</image>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://write.as/img/screens/gtk/monospace.png</image>
+    </screenshot>
+  </screenshots>
 </components>
