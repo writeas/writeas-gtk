@@ -13,4 +13,5 @@ Standards-Version: 3.9.3
 Package: write-as-gtk
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Recommend: fonts-open-sans, fonts-hack
 Description: A distraction free and private writing tool, with builtin publishing.
