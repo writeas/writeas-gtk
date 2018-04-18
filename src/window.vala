@@ -63,12 +63,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         var publish_button = new Gtk.Button.from_icon_name("document-send",
                 Gtk.IconSize.SMALL_TOOLBAR);
         publish_button.clicked.connect(() => {
-            title = _("Publishing post…");
-            canvas.sensitive = false;
-            publish.begin((obj, res) => {
-                canvas.buffer.text += "\n\n" + publish.end(res);
-                canvas.sensitive = true;
-            });
+            canvas.buffer.text += "\n\n" + publish();
         });
         header.pack_end(publish_button);
 
@@ -149,7 +144,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         }
     }
 
-    private async string publish() {
+    private string publish() {
         try {
             if (text_changed) {;
             draft_file().replace_contents(canvas.buffer.text.data, null, false,
@@ -158,7 +153,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             text_changed = false;
             }
 
-            var cmd = "sh -c 'cat ~/.writeas-draft.txt | writeas'";
+            var cmd = "sh -c 'cat ~/.writeas-draft.txt | writeas --font %s'";
+            cmd = cmd.printf(fontstyle);
             string stdout, stderr;
             int status;
             Process.spawn_command_line_sync(cmd,
