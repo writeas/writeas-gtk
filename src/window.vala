@@ -13,15 +13,27 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         canvas = new Gtk.TextView();
         canvas.wrap_mode = Gtk.WrapMode.WORD_CHAR;
         add(canvas);
+
+        var text_changed = false;
         canvas.event_after.connect((evt) => {
             // TODO This word count algorithm may be quite naive
             //      and could do improvement.
             var word_count = canvas.buffer.text.split(" ").length;
             title = ngettext("%i word","%i words",word_count).printf(word_count);
 
+            text_changed = true;
+        });
+        Timeout.add_full(Priority.DEFAULT_IDLE, 100/*ms*/, () => {
+            if (!text_changed) return Source.CONTINUE;
+
+            try {
             draft_file().replace_contents(canvas.buffer.text.data, null, false,
                 FileCreateFlags.PRIVATE | FileCreateFlags.REPLACE_DESTINATION,
                 null);
+            text_changed = false;
+            } catch (Error err) {/* We'll try again anyways. */}
+
+            return Source.CONTINUE;
         });
 
         adjust_text_style();
