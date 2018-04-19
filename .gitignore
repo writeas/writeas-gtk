@@ -1,0 +1,6 @@
+*.swp
+*~
+
+build
+.ninja_*
+build.ninja
