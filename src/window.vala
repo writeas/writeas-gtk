@@ -99,9 +99,11 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         fonts.popup.show_all();
     }
 
+    private unowned SList<Gtk.RadioMenuItem>? font_options = null;
     private void build_fontoption(Gtk.Menu menu,
             string label, string fontstyle, string families) {
-        var option = new Gtk.MenuItem.with_label(label);
+        var option = new Gtk.RadioMenuItem.with_label(font_options, label);
+        font_options = option.get_group();
         option.activate.connect(() => {
             this.font = families;
             this.fontstyle = fontstyle;
