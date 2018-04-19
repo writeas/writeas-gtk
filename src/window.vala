@@ -199,7 +199,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             text_changed = false;
             }
 
-            var cmd = "sh -c 'cat ~/.writeas-draft.txt | writeas --font %s'";
+            var cmd = "sh -c 'cat ~/" + data_dir + "/draft.txt | writeas --font %s'";
             cmd = cmd.printf(fontstyle);
             string stdout, stderr;
             int status;
