@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=write.as
+Name=Write.as
 Comment=Spread your ideas
 Exec=write-as-gtk %f
 Icon=write-as
