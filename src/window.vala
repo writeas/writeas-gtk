@@ -225,6 +225,12 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             focus of this app. */
         var accels = new Gtk.AccelGroup();
 
+        accels.connect(Gdk.Key.W, Gdk.ModifierType.CONTROL_MASK,
+                Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED,
+                (g,a,k,m) => quit());
+        accels.connect(Gdk.Key.Q, Gdk.ModifierType.CONTROL_MASK,
+                Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED,
+                (g,a,k,m) => quit());
         accels.connect(Gdk.Key.S, Gdk.ModifierType.CONTROL_MASK,
                 Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED,
                 (g,a,k,m) => save_as());
@@ -278,6 +284,11 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         uint8[] text;
         file.load_contents(null, out text, null);
         canvas.buffer.text = (string) text;
+    }
+
+    private bool quit() {
+        this.close();
+        return true;
     }
 }
 
