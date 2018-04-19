@@ -163,7 +163,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             var styles = canvas.get_style_context();
             if (cur_styles != null) styles.remove_provider(cur_styles);
 
-            var css = "* {font: %s; padding: 20px;}".printf(font);
+            var css = "* {font: %s; font-size: 1.15em; padding: 20px;}".printf(font);
             if (dark_mode) {
                 // Try to detect whether the system provided a better dark mode.
                 var text_color = styles.get_color(Gtk.StateFlags.ACTIVE);
