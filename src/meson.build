@@ -1,4 +1,4 @@
-executable('write-as-gtk',
+executable('writeas-gtk',
     'application.vala',
     'window.vala',
 

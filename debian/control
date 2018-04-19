@@ -1,4 +1,4 @@
-Source: write-as-gtk
+Source: writeas-gtk
 Section: x11
 Priority: extra
 Maintainer: Adrian Cochrane <alcinnz@lavabit.com>
@@ -10,7 +10,7 @@ Build-Depends: meson,
                libsoup2.4-dev (>= 2.52.2)
 Standards-Version: 3.9.3
 
-Package: write-as-gtk
+Package: writeas-gtk
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Recommends: fonts-open-sans, fonts-hack

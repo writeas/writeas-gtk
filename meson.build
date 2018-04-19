@@ -1,4 +1,4 @@
-project('write-as-gtk', ['vala', 'c'],
+project('writeas-gtk', ['vala', 'c'],
     version: '0.1',
     license: 'GNU',
     meson_version: '>=0.40.1')

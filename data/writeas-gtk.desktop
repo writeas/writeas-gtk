@@ -2,7 +2,7 @@
 Type=Application
 Name=Write.as
 Comment=Spread your ideas
-Exec=write-as-gtk %f
+Exec=writeas-gtk %f
 Icon=write-as
 Terminal=false
 MimeType=text/plain;
