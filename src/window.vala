@@ -43,7 +43,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     public MainWindow(Gtk.Application app) {
         set_application(app);
-        icon_name = "write-as-gtk";
+        icon_name = "write-as";
         try {
             open_file(draft_file());
         } catch (Error err) {/* It's fine... */}
