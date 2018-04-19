@@ -207,10 +207,12 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
                     out stdout, out stderr, out status);
 
             // Open it in the browser
-            var browser = AppInfo.get_default_for_uri_scheme("https");
-            var urls = new List<string>();
-            urls.append(stdout.strip());
-            browser.launch_uris(urls, null);
+            if (status == 0) {
+                var browser = AppInfo.get_default_for_uri_scheme("https");
+                var urls = new List<string>();
+                urls.append(stdout.strip());
+                browser.launch_uris(urls, null);
+            }
 
             return stderr.strip();
         } catch (Error err) {
