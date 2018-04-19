@@ -126,19 +126,24 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private KeyFile theme = new KeyFile();
     private void restore_styles() {
         try {
+            loaded_theme = true;
+
             theme.load_from_file(
                     Environment.get_home_dir() + "/.writeas-theme.ini",
                     KeyFileFlags.NONE);
 
             dark_mode = theme.get_boolean("Theme", "darkmode");
+            Gtk.Settings.get_default().gtk_application_prefer_dark_theme = dark_mode;
             font = theme.get_string("Theme", "font");
             fontstyle = theme.get_string("Theme", "fontstyle");
 
             adjust_text_style(false);
-        } catch (Error err) {/* No biggy */}
+        } catch (Error err) {/* No biggy... */}
     }
 
     private Gtk.CssProvider cur_styles = null;
+    // So the theme isn't read before it's saved.
+    private bool loaded_theme = false;
     private void adjust_text_style(bool save_theme = true) {
         try {
             var styles = canvas.get_style_context();
@@ -159,12 +164,12 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
             styles.add_provider(cur_styles, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            if (save_theme) {
+            if (save_theme && loaded_theme) {
                 theme.set_boolean("Theme", "darkmode", dark_mode);
                 theme.set_string("Theme", "font", font);
                 theme.set_string("Theme", "fontstyle", fontstyle);
 
-                theme.save_to_file(Environment.get_home_dir()+
+                theme.save_to_file(Environment.get_home_dir() +
                         "/.writeas-theme.ini");
             }
         } catch (Error e) {
