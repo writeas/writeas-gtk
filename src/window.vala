@@ -1,6 +1,8 @@
 public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private Gtk.TextView canvas;
 
+    private static string data_dir = ".writeas";
+
     private bool dark_mode = false;
     private string font = "Lora, 'Palatino Linotype',"
             + "'Book Antiqua', 'New York', 'DejaVu serif', serif";
@@ -44,6 +46,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     public MainWindow(Gtk.Application app) {
         set_application(app);
         icon_name = "write-as";
+        init_folder();
         try {
             open_file(draft_file());
         } catch (Error err) {/* It's fine... */}
@@ -52,9 +55,22 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         set_default_size(800, 600);
     }
 
+    private static void init_folder() {
+        var home = File.new_for_path(get_data_dir());
+        try {
+            home.make_directory();
+        } catch (Error e) {
+            stderr.printf("Create data dir: %s\n", e.message);
+        }
+    }
+
+    private static string get_data_dir() {
+        return Environment.get_home_dir() + "/" + data_dir;
+    }
+
     private static File draft_file() {
-        var home = File.new_for_path(Environment.get_home_dir());
-        return home.get_child(".writeas-draft.txt");
+        var home = File.new_for_path(get_data_dir());
+        return home.get_child("draft.txt");
     }
 
     private void construct_toolbar() {
@@ -128,9 +144,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         try {
             loaded_theme = true;
 
-            theme.load_from_file(
-                    Environment.get_home_dir() + "/.writeas-theme.ini",
-                    KeyFileFlags.NONE);
+            theme.load_from_file(get_data_dir() + "/prefs.ini", KeyFileFlags.NONE);
 
             dark_mode = theme.get_boolean("Theme", "darkmode");
             Gtk.Settings.get_default().gtk_application_prefer_dark_theme = dark_mode;
@@ -169,8 +183,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
                 theme.set_string("Theme", "font", font);
                 theme.set_string("Theme", "fontstyle", fontstyle);
 
-                theme.save_to_file(Environment.get_home_dir() +
-                        "/.writeas-theme.ini");
+                theme.save_to_file(get_data_dir() + "/prefs.ini");
             }
         } catch (Error e) {
             warning(e.message);
