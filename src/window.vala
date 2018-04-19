@@ -47,6 +47,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         try {
             open_file(draft_file());
         } catch (Error err) {/* It's fine... */}
+        restore_styles();
 
         set_default_size(800, 600);
     }
@@ -122,8 +123,23 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         menu.add(option);
     }
 
+    private KeyFile theme = new KeyFile();
+    private void restore_styles() {
+        try {
+            theme.load_from_file(
+                    Environment.get_home_dir() + "/.writeas-theme.ini",
+                    KeyFileFlags.NONE);
+
+            dark_mode = theme.get_boolean("Theme", "darkmode");
+            font = theme.get_string("Theme", "font");
+            fontstyle = theme.get_string("Theme", "fontstyle");
+
+            adjust_text_style(false);
+        } catch (Error err) {/* No biggy */}
+    }
+
     private Gtk.CssProvider cur_styles = null;
-    private void adjust_text_style() {
+    private void adjust_text_style(bool save_theme = true) {
         try {
             var styles = canvas.get_style_context();
             if (cur_styles != null) styles.remove_provider(cur_styles);
@@ -142,6 +158,15 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             cur_styles.load_from_data(css);
 
             styles.add_provider(cur_styles, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            if (save_theme) {
+                theme.set_boolean("Theme", "darkmode", dark_mode);
+                theme.set_string("Theme", "font", font);
+                theme.set_string("Theme", "fontstyle", fontstyle);
+
+                theme.save_to_file(Environment.get_home_dir()+
+                        "/.writeas-theme.ini");
+            }
         } catch (Error e) {
             warning(e.message);
         }
