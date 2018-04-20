@@ -251,6 +251,10 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             }
             return true;
         });
+        accels.connect(Gdk.Key.Return, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED, (g,a,k,m) => {
+            canvas.buffer.text += "\n\n" + publish();
+            return true;
+        });
 
         add_accel_group(accels);
     }
