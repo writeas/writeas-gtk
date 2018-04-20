@@ -253,6 +253,13 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             }
             return true;
         });
+
+        // Toggle theme with Ctrl+T
+        accels.connect(Gdk.Key.T, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED, (g,a,k,m) => {
+            darkmode_button.set_active(!darkmode_button.get_active());
+            return true;
+        });
+
         accels.connect(Gdk.Key.Return, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED, (g,a,k,m) => {
             canvas.buffer.text += "\n\n" + publish();
             return true;
