@@ -1,6 +1,7 @@
 public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private Gtk.TextView canvas;
     private Gtk.HeaderBar header;
+    private Gtk.ToggleButton darkmode_button;
 
     private static string data_dir = ".writeas";
 
@@ -87,7 +88,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         });
         header.pack_end(publish_button);
 
-        var darkmode_button = new Gtk.ToggleButton();
+        darkmode_button = new Gtk.ToggleButton();
         darkmode_button.tooltip_text = _("Toggle dark theme");
         // NOTE the fallback icon is a bit of a meaning stretch, but it works.
         var icon_theme = Gtk.IconTheme.get_default();
@@ -149,6 +150,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             theme.load_from_file(get_data_dir() + "/prefs.ini", KeyFileFlags.NONE);
 
             dark_mode = theme.get_boolean("Theme", "darkmode");
+            darkmode_button.set_active(dark_mode);
             Gtk.Settings.get_default().gtk_application_prefer_dark_theme = dark_mode;
             font = theme.get_string("Theme", "font");
             fontstyle = theme.get_string("Theme", "fontstyle");
