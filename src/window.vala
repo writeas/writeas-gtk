@@ -1,5 +1,6 @@
 public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private Gtk.TextView canvas;
+    private Gtk.HeaderBar header;
 
     private static string data_dir = ".writeas";
 
@@ -10,6 +11,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private bool text_changed = false;
 
     construct {
+        header = new Gtk.HeaderBar();
+        header.title = "Write.as";
         construct_toolbar();
         build_keyboard_shortcuts();
 
@@ -23,7 +26,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             // TODO This word count algorithm may be quite naive
             //      and could do improvement.
             var word_count = canvas.buffer.text.split(" ").length;
-            title = ngettext("%i word","%i words",word_count).printf(word_count);
+            header.subtitle = ngettext("%i word","%i words",word_count).printf(word_count);
 
             text_changed = true;
         });
@@ -74,7 +77,6 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     }
 
     private void construct_toolbar() {
-        var header = new Gtk.HeaderBar();
         header.show_close_button = true;
         set_titlebar(header);
 
