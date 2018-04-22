@@ -10,9 +10,7 @@ but do to the simplicity of the app this shouldn't be much of a problem to anyon
 Write.as GTK uses the [Meson/Ninja](http://mesonbuild.com/) build system, and as such you can install it on
 any FreeDesktop.Org compatible system using:
 
-    mkdir build
-    cd build
-    meson ..
+    meson build && cd build
     ninja
     sudo ninja install
 
