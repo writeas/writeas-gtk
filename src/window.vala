@@ -5,6 +5,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     private static string data_dir = ".writeas";
 
+    private int font_size = 12;
     private bool dark_mode = false;
     private string font = "Lora, 'Palatino Linotype',"
             + "'Book Antiqua', 'New York', 'DejaVu serif', serif";
@@ -156,6 +157,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             dark_mode = theme.get_boolean("Theme", "darkmode");
             darkmode_button.set_active(dark_mode);
             Gtk.Settings.get_default().gtk_application_prefer_dark_theme = dark_mode;
+            font_size = theme.get_integer("Theme", "fontsize");
             font = theme.get_string("Post", "font");
             fontstyle = theme.get_string("Post", "fontstyle");
 
@@ -171,7 +173,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             var styles = canvas.get_style_context();
             if (cur_styles != null) styles.remove_provider(cur_styles);
 
-            var css = "* {font: %s; font-size: 1.15em; padding: 20px;}".printf(font);
+            var css = "* {font: %s; font-size: %dpt; padding: 20px;}".printf(font, font_size);
             if (dark_mode) {
                 // Try to detect whether the system provided a better dark mode.
                 var text_color = styles.get_color(Gtk.StateFlags.ACTIVE);
@@ -188,6 +190,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
             if (save_theme && loaded_theme) {
                 theme.set_boolean("Theme", "darkmode", dark_mode);
+                theme.set_integer("Theme", "fontsize", font_size);
                 theme.set_string("Post", "font", font);
                 theme.set_string("Post", "fontstyle", fontstyle);
 
@@ -258,6 +261,29 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             } catch (Error e) {
                 // It's fine...
             }
+            return true;
+        });
+
+        // Adjust text size
+        accels.connect(Gdk.Key.minus, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED, (g,a,k,m) => {
+            if (font_size < 3) {
+                return false;
+            }
+            if (font_size <= 10) {
+                font_size -= 1;
+            } else {
+                font_size -= 2;
+            }
+            adjust_text_style(true);
+            return true;
+        });
+        accels.connect(Gdk.Key.equal, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED, (g,a,k,m) => {
+            if (font_size < 10) {
+                font_size += 1;
+            } else {
+                font_size += 2;
+            }
+            adjust_text_style(true);
             return true;
         });
 
