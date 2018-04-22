@@ -11,6 +11,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private string fontstyle = "serif";
     private bool text_changed = false;
 
+    private bool is_initializing = true;
+
     construct {
         header = new Gtk.HeaderBar();
         header.title = "Write.as";
@@ -44,7 +46,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             return Source.CONTINUE;
         });
 
-        adjust_text_style();
+        adjust_text_style(false);
+
     }
 
     public MainWindow(Gtk.Application app) {
@@ -57,6 +60,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         restore_styles();
 
         set_default_size(800, 600);
+        is_initializing = false;
     }
 
     private static void init_folder() {
@@ -101,7 +105,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         darkmode_button.toggled.connect(() => {
             settings.gtk_application_prefer_dark_theme = darkmode_button.active;
             dark_mode = darkmode_button.active;
-            adjust_text_style();
+            adjust_text_style(!is_initializing);
         });
         header.pack_end(darkmode_button);
 
@@ -127,7 +131,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         option.activate.connect(() => {
             this.font = families;
             this.fontstyle = fontstyle;
-            adjust_text_style();
+            adjust_text_style(!is_initializing);
         });
 
         var styles = option.get_style_context();
