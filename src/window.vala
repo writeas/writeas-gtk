@@ -156,8 +156,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             dark_mode = theme.get_boolean("Theme", "darkmode");
             darkmode_button.set_active(dark_mode);
             Gtk.Settings.get_default().gtk_application_prefer_dark_theme = dark_mode;
-            font = theme.get_string("Theme", "font");
-            fontstyle = theme.get_string("Theme", "fontstyle");
+            font = theme.get_string("Post", "font");
+            fontstyle = theme.get_string("Post", "fontstyle");
 
             adjust_text_style(false);
         } catch (Error err) {/* No biggy... */}
@@ -188,8 +188,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
             if (save_theme && loaded_theme) {
                 theme.set_boolean("Theme", "darkmode", dark_mode);
-                theme.set_string("Theme", "font", font);
-                theme.set_string("Theme", "fontstyle", fontstyle);
+                theme.set_string("Post", "font", font);
+                theme.set_string("Post", "fontstyle", fontstyle);
 
                 theme.save_to_file(get_data_dir() + "/prefs.ini");
             }
