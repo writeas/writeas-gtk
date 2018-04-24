@@ -327,8 +327,11 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
         var resp = file_chooser.run();
         file_chooser.close();
-        if (resp == Gtk.ResponseType.ACCEPT) return file_chooser.get_file();
-        else throw new UserCancellable.USER_CANCELLED("FileChooserDialog");
+        if (resp == Gtk.ResponseType.ACCEPT) {
+            return file_chooser.get_file();
+        } else {
+            throw new UserCancellable.USER_CANCELLED("FileChooserDialog");
+        }
     }
 
     public void open_file(File file) throws Error {
