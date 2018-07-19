@@ -1,6 +1,6 @@
 project('writeas-gtk', ['vala', 'c'],
     version: '0.1',
-    license: 'GNU',
+    license: 'GPL',
     meson_version: '>=0.40.1')
 
 i18n = import('i18n')
