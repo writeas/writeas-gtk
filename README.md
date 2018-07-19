@@ -1,10 +1,9 @@
 # Write.as GTK App
 A Write.as desktop app that targets all freedesktop.org compliant desktops, e.g. 
 GNU/Linux, FreeBSD, etc; basically everything except Windows, Mac, iOS, and 
-Android. It allows you to compose and publish posts to https://write.as/.
+Android. It lets you compose and publish posts to [Write.as](https://write.as/).
 
-For a UI toolkit it uses GTK (where some systems may slightly prefer, say, Qt), 
-but do to the simplicity of the app this shouldn't be much of a problem to anyone.
+For a UI toolkit it uses GTK, and relies on the [writeas-cli](https://github.com/writeas/writeas-cli) for API calls and post management.
 
 ## Installation
 Write.as GTK uses the [Meson/Ninja](http://mesonbuild.com/) build system, and as such you can install it on
