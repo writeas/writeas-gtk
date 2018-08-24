@@ -107,7 +107,6 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     private static bool supports_dark_theme() {
         var theme = Gtk.Settings.get_default().gtk_theme_name;
-        stdout.printf("%s\n", theme);
         return Gtk.CssProvider.get_named(theme, null).to_string() !=
                 Gtk.CssProvider.get_named(theme, "dark").to_string();
     }
@@ -136,7 +135,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         darkmode_button.toggled.connect(() => {
             settings.gtk_application_prefer_dark_theme = darkmode_button.active;
             dark_mode = darkmode_button.active;
-            adjust_text_style(!is_initializing);
+            if (!is_initializing) theme_save();
         });
         if (supports_dark_theme()) header.pack_end(darkmode_button);
 
@@ -214,17 +213,22 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
                     cur_styles, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            if (save_theme && loaded_theme) {
-                theme.set_boolean("Theme", "darkmode", dark_mode);
-                theme.set_integer("Theme", "fontsize", font_size);
-                theme.set_string("Post", "font", font);
-                theme.set_string("Post", "fontstyle", fontstyle);
-
-                theme.save_to_file(get_data_dir() + "/prefs.ini");
-            }
+            if (save_theme) theme_save();
         } catch (Error e) {
             warning(e.message);
         }
+    }
+
+    private void theme_save() {
+        if (!loaded_theme) return;
+        theme.set_boolean("Theme", "darkmode", dark_mode);
+        theme.set_integer("Theme", "fontsize", font_size);
+        theme.set_string("Post", "font", font);
+        theme.set_string("Post", "fontstyle", fontstyle);
+
+        try {
+            theme.save_to_file(get_data_dir() + "/prefs.ini");
+        } catch (FileError err) {/* Oh well. */}
     }
 
     private string publish() {
