@@ -189,9 +189,10 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private void adjust_text_style(bool save_theme = true) {
         try {
             var styles = canvas.get_style_context();
-            if (cur_styles != null) styles.remove_provider(cur_styles);
+            if (cur_styles != null)
+                Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(), cur_styles);
 
-            var css = "* {font: %s; font-size: %dpt; padding: 20px;}".printf(font, font_size);
+            var css = "GtkTextView {font: %s; font-size: %dpt; padding: 20px; -GtkWidget-cursor-color: #5ac4ee;}".printf(font, font_size);
             if (dark_mode) {
                 // Try to detect whether the system provided a better dark mode.
                 var text_color = styles.get_color(Gtk.StateFlags.ACTIVE);
@@ -199,12 +200,14 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
                 Gtk.rgb_to_hsv(text_color.red, text_color.green, text_color.blue,
                         out h, out s, out v);
 
-                if (v < 0.5) css += "* {background: #222; color: white;}";
+                if (v < 0.5)
+                    css += """GtkTextView {background: black; color: #999;}""";
             }
             cur_styles = new Gtk.CssProvider();
             cur_styles.load_from_data(css);
 
-            styles.add_provider(cur_styles, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
+                    cur_styles, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
             if (save_theme && loaded_theme) {
                 theme.set_boolean("Theme", "darkmode", dark_mode);
