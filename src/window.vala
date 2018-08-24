@@ -56,8 +56,12 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         Timeout.add_full(Priority.DEFAULT_IDLE, 100/*ms*/, () => {
             if (!text_changed) return Source.CONTINUE;
 
+            var text = canvas.buffer.text;
+            // This happens sometimes for some reason, but it's difficult to debug.
+            if (text == "") return Source.CONTINUE;
+
             try {
-            draft_file().replace_contents(canvas.buffer.text.data, null, false,
+            draft_file().replace_contents(text.data, null, false,
                 FileCreateFlags.PRIVATE | FileCreateFlags.REPLACE_DESTINATION,
                 null);
             text_changed = false;
@@ -76,7 +80,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         init_folder();
         try {
             open_file(draft_file());
-        } catch (Error err) {/* It's fine... */}
+        } catch (Error err) {canvas.buffer.text = err.message;}
         restore_styles();
 
         set_default_size(800, 600);
