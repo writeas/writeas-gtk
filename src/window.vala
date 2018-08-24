@@ -44,6 +44,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         scrolled.add(canvas);
         add(scrolled);
 
+        size_allocate.connect((_) => {adjust_text_style();});
         canvas.event_after.connect((evt) => {
             // TODO This word count algorithm may be quite naive
             //      and could do improvement.
@@ -192,7 +193,11 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             if (cur_styles != null)
                 Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(), cur_styles);
 
-            var css = "GtkTextView {font: %s; font-size: %dpt; padding: 20px; -GtkWidget-cursor-color: #5ac4ee;}".printf(font, font_size);
+            var padding = canvas.get_allocated_width()*0.10;
+            var css = ("GtkTextView {font: %s; font-size: %dpx; padding: 20px;" +
+                    " padding-left: %ipx; padding-right: %ipx;" +
+                    " -GtkWidget-cursor-color: #5ac4ee;}").printf(font, font_size,
+                        (int) padding, (int) padding);
             if (dark_mode) {
                 // Try to detect whether the system provided a better dark mode.
                 var text_color = styles.get_color(Gtk.StateFlags.ACTIVE);
