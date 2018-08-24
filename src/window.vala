@@ -105,6 +105,13 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         return home.get_child("draft.txt");
     }
 
+    private static bool supports_dark_theme() {
+        var theme = Gtk.Settings.get_default().gtk_theme_name;
+        stdout.printf("%s\n", theme);
+        return Gtk.CssProvider.get_named(theme, null).to_string() !=
+                Gtk.CssProvider.get_named(theme, "dark").to_string();
+    }
+
     private void construct_toolbar() {
         header.show_close_button = true;
         set_titlebar(header);
@@ -131,7 +138,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             dark_mode = darkmode_button.active;
             adjust_text_style(!is_initializing);
         });
-        header.pack_end(darkmode_button);
+        if (supports_dark_theme()) header.pack_end(darkmode_button);
 
         var fonts = new Gtk.MenuButton();
         fonts.tooltip_text = _("Change document font");
@@ -193,7 +200,6 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private bool loaded_theme = false;
     private void adjust_text_style(bool save_theme = true) {
         try {
-            var styles = canvas.get_style_context();
             if (cur_styles != null)
                 Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(), cur_styles);
 
@@ -202,16 +208,6 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
                     " padding-left: %ipx; padding-right: %ipx;" +
                     " -GtkWidget-cursor-color: #5ac4ee;}").printf(font, font_size,
                         (int) padding, (int) padding);
-            if (dark_mode) {
-                // Try to detect whether the system provided a better dark mode.
-                var text_color = styles.get_color(Gtk.StateFlags.ACTIVE);
-                double h, s, v;
-                Gtk.rgb_to_hsv(text_color.red, text_color.green, text_color.blue,
-                        out h, out s, out v);
-
-                if (v < 0.5)
-                    css += """GtkTextView {background: black; color: #999;}""";
-            }
             cur_styles = new Gtk.CssProvider();
             cur_styles.load_from_data(css);
 
