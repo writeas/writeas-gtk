@@ -119,6 +119,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
                 Gtk.IconSize.SMALL_TOOLBAR);
         publish_button.clicked.connect(() => {
             canvas.buffer.text += "\n\n" + publish();
+
+            canvas.grab_focus();
         });
         header.pack_end(publish_button);
 
@@ -136,6 +138,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             settings.gtk_application_prefer_dark_theme = darkmode_button.active;
             dark_mode = darkmode_button.active;
             if (!is_initializing) theme_save();
+
+            canvas.grab_focus();
         });
         if (supports_dark_theme()) header.pack_end(darkmode_button);
 
@@ -162,6 +166,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             this.font = families;
             this.fontstyle = fontstyle;
             adjust_text_style(!is_initializing);
+
+            canvas.grab_focus();
         });
 
         var styles = option.get_style_context();
@@ -174,6 +180,10 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         }
 
         menu.add(option);
+    }
+
+    public override void grab_focus() {
+        canvas.grab_focus();
     }
 
     private KeyFile theme = new KeyFile();
