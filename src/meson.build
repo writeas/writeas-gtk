@@ -4,6 +4,6 @@ executable('writeas-gtk',
 
     c_args: ['-include', 'config.h'],
     link_args: '-lm',
-    dependencies: [dependency('gtk+-3.0')],
+    dependencies: [dependency('gtk+-3.0'), dependency('gtksourceview-3.0')],
     install: true
 )
