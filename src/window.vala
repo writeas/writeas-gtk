@@ -107,8 +107,22 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     private static bool supports_dark_theme() {
         var theme = Gtk.Settings.get_default().gtk_theme_name;
-        return Gtk.CssProvider.get_named(theme, null).to_string() !=
-                Gtk.CssProvider.get_named(theme, "dark").to_string();
+
+        foreach (var datapath in Environment.get_system_data_dirs()) {
+            var path = File.new_for_path(Path.build_filename(datapath, "themes", theme));
+            if (path.get_child("gtk-dark.css").query_exists()) return true;
+
+            try {
+                var enumerator = path.enumerate_children("standard::*", 0);
+                FileInfo info = null;
+                while ((info = enumerator.next_file()) != null) {
+                    var fullpath = path.get_child(info.get_name()).get_child("gtk-dark.css");
+                    if (fullpath.query_exists()) return true;
+                }
+            } catch (Error err) {/* Might be missing something, but no biggy. */}
+        }
+
+        return false;
     }
 
     private void construct_toolbar() {
