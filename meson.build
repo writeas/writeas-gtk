@@ -1,5 +1,5 @@
 project('writeas-gtk', ['vala', 'c'],
-    version: '0.1',
+    version: '1.0.0-beta',
     license: 'GPL',
     meson_version: '>=0.40.1')
 
