@@ -4,10 +4,10 @@
   <project_license>GPL-3.0+</project_license>
   <metadata_license>GPL-3.0+</metadata_license>
   <name>Write.as</name>
-  <summary>Spread your ideas</summary>
+  <summary>Publish a thought in seconds.</summary>
 
   <description>
-    <p>A Distraction Free Writing Tool:</p>
+    <p>A Distraction-Free Writing Tool:</p>
     <p>We eliminate notifications, streams, likes, and commentary so you can focus on your words. Enjoy a clear mind and a beautifully simple space to write your thoughts.</p>
 
     <p>Publish Articles:</p>
@@ -17,7 +17,7 @@
     <p>Focus on your ideas — not who's listening. We go farther than the rest to protect your privacy, and even make it easy to publish under multiple pen names if you want.</p>
   </description>
 
-  <developer_name>A Bunch Tell LLC</developer>
+  <developer_name>Write.as</developer_name>
   <url type="homepage">https://write.as/</url>
   <url type="help">https://write.as/contact</url>
   <url type="bugtracker">https://code.as/writeas/writeas-gtk/issues</url>
