@@ -308,15 +308,6 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
                 Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK,
                 Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED,
                 (g,a,k,m) => save_as());
-        accels.connect(Gdk.Key.O, Gdk.ModifierType.CONTROL_MASK,
-                Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED, (g, a, k, m) => {
-            try {
-                open_file(prompt_file(Gtk.FileChooserAction.OPEN, _("_Open")));
-            } catch (Error e) {
-                // It's fine...
-            }
-            return true;
-        });
 
         // Adjust text size
         accels.connect(Gdk.Key.minus, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED, (g,a,k,m) => {
