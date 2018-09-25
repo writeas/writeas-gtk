@@ -350,7 +350,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     private bool save_as() {
         try {
-        var file = prompt_file(Gtk.FileChooserAction.SAVE, _("_Save as"));
+        var file = prompt_file(Gtk.FileChooserAction.SAVE, _("Save as"));
         file.replace_contents(canvas.buffer.text.data, null, false,
                 FileCreateFlags.PRIVATE | FileCreateFlags.REPLACE_DESTINATION,
                 null);
@@ -363,7 +363,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private File prompt_file(Gtk.FileChooserAction mode, string action)
             throws UserCancellable {
         var file_chooser = new Gtk.FileChooserDialog(action, this, mode,
-              _("_Cancel"), Gtk.ResponseType.CANCEL,
+              _("Cancel"), Gtk.ResponseType.CANCEL,
               action, Gtk.ResponseType.ACCEPT);
 
         file_chooser.select_multiple = false;
