@@ -5,17 +5,41 @@ Android. It lets you compose and publish posts to [Write.as](https://write.as/).
 
 For a UI toolkit it uses GTK, and relies on the [writeas-cli](https://github.com/writeas/writeas-cli) for API calls and post management.
 
+## Usage
+
+See the [User Guide](https://code.as/writeas/writeas-gtk/src/branch/master/USER_GUIDE.md).
+
 ## Installation
 Write.as GTK uses the [Meson/Ninja](http://mesonbuild.com/) build system, and as such you can install it on
 any FreeDesktop.Org compatible system using:
 
-    meson build && cd build
-    ninja
-    sudo ninja install
+```bash
+# Install latest version of meson
+# Either via pip:
+pip3 install meson
+# Or, if you need to build the .deb:
+sudo add-apt-repository ppa:jonathonf/meson
+sudo apt update
+sudo apt install meson
+
+# Build
+meson build && cd build
+ninja
+
+# Install
+sudo ninja install
+```
 
 This will install the executable file and the metadata required to integrate with
 those desktops. It also installs metadata to be collected by package repositories
 which integrate with certain package managers for richer presentation of apps.
+
+Though not required for local use, Write.as GTK relies on our [command-line interface](https://github.com/writeas/writeas-cli) for publishing to Write.as.
+Install it by downloading the [latest release](https://github.com/writeas/writeas-cli/releases/latest) or, with [Go (golang)](https://golang.org) installed, running:
+
+```bash
+go get github.com/writeas/writeas-cli/cmd/writeas
+```
 
 ## Packaging
 You can package Write.as GTK for Debian/Apt-based systems by running in this
