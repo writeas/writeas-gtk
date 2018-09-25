@@ -48,6 +48,8 @@ Once you've finished writing, press the _Publish_ button in the top-right corner
 Your browser will open to the post on Write.as, and its URL will be copied to your clipboard so you can paste it wherever you want to share it.
 Behind the scenes, the CLI will store the special information needed to edit or delete the post in the future (see [Managing posts](#managing-posts) below for how to do this).
 
+After the post is published, you can press Ctrl + S to permanently save the file on your computer, or delete everything in the file to start fresh.
+
 ## Managing posts
 
 Published posts are managed by [writeas-cli](https://github.com/writeas/writeas-cli). See its [User Guide](https://github.com/writeas/writeas-cli/blob/master/GUIDE.md) for how to update and delete posts on Write.as via the command-line.
