@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=Application
 Name=Write.as
-Comment=Spread your ideas
+Comment=Publish a thought in seconds.
 Exec=writeas-gtk %f
 Icon=write-as
 Terminal=false
 MimeType=text/plain;
 Categories=GTK;Office;Publishing;
-Keywords=blog;pastebin;snippets;code;publish;
+Keywords=blog;text;editor;publish;
 StartupNotify=true
 
