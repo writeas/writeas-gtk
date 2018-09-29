@@ -20,7 +20,7 @@
   <developer_name>Write.as</developer_name>
   <url type="homepage">https://write.as/</url>
   <url type="help">https://write.as/contact</url>
-  <url type="bugtracker">https://code.as/writeas/writeas-gtk/issues</url>
+  <url type="bugtracker">https://github.com/writeas/writeas-gtk/issues</url>
   <update_contact>hello@write.as</update_contact>
 
   <provides>
