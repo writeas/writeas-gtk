@@ -76,6 +76,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     }
 
     public MainWindow(Gtk.Application app) {
+        stdout.printf("writeas-gtk v%s\n", version);
+
         set_application(app);
         icon_name = "write-as";
         init_folder();
