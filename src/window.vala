@@ -22,7 +22,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private Gtk.ToggleButton darkmode_button;
 
     private static string data_dir = ".writeas";
-    private static string version = "1.0.0-beta";
+    private static string version = "1.0.0";
 
     private int font_size = 12;
     private bool dark_mode = false;

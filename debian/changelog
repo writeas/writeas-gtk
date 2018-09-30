@@ -1,5 +1,5 @@
-writeas-gtk (1.0.0) precise; urgency=low
+writeas-gtk (1.0.0-1) xenial; urgency=medium
 
   * Initial Release.
 
- -- Write.as <hello@write.as>  Wed, 18 Apr 2018 14:20:25 +1200
+ -- Write.as <hello@write.as>  Mon, 1 Oct 2018 13:23:25 -0400
