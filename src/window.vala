@@ -265,7 +265,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             text_changed = false;
             }
 
-            var cmd = "sh -c 'cat ~/" + data_dir + "/draft.txt | writeas --font %s --user-agent \"writeas-gtk v" + version + "\"'";
+            var cmd = "sh -c 'cat ~/" + data_dir + "/draft.txt | writeas --md --font %s --user-agent \"writeas-gtk v" + version + "\"'";
             cmd = cmd.printf(fontstyle);
             string stdout, stderr;
             int status;
