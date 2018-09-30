@@ -7,14 +7,18 @@
   <summary>Publish a thought in seconds.</summary>
 
   <description>
-    <p>A Distraction-Free Writing Tool:</p>
-    <p>We eliminate notifications, streams, likes, and commentary so you can focus on your words. Enjoy a clear mind and a beautifully simple space to write your thoughts.</p>
-
-    <p>Publish Articles:</p>
-    <p>Write your apps in the privacy and convenience of your desktop of choice with this native app, all without signing up. Write something, press publish, and share the link to your new post — that's all there is to it!</p>
-
-    <p>Privacy By Default:</p>
-    <p>Focus on your ideas — not who's listening. We go farther than the rest to protect your privacy, and even make it easy to publish under multiple pen names if you want.</p>
+    <p>Write.as is a simple writing tool and publishing platform. There's no sign up — just open the app, write something, and publish.</p>
+    <p>Published posts get a secret, unique link on Write.as that you can share with anyone, or keep to yourself. In either case, you remain private because we don't collect personal information about you.</p>
+    <ul>
+      <li>Simple, distraction-free editor built for your words</li>
+      <li>Instantly launches to a blank page or your last draft</li>
+      <li>Writing automatically saves as you type</li>
+      <li>Work on a single local draft, then publish or save as another file when you're finished</li>
+      <li>Choose from three different fonts: serif, sans-serif, or monospace</li>
+      <li>Dark mode on platforms that support it</li>
+      <li>Publish to Write.as and share your post (<a href="https://write.as/l23z7d6yb0dd5v4c.md">example</a>)</li>
+      <li>Manage published posts with the built-in command-line interface</li>
+    </ul>
   </description>
 
   <developer_name>Write.as</developer_name>
