@@ -2,10 +2,10 @@
 Type=Application
 Name=Write.as
 Comment=Publish a thought in seconds.
-Exec=writeas-gtk %f
+Exec=writeas-gtk
 Icon=write-as
 Terminal=false
-MimeType=text/plain;
+MimeType=
 Categories=GTK;Office;Publishing;
 Keywords=blog;text;editor;publish;
 StartupNotify=true
