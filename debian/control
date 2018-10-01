@@ -1,4 +1,4 @@
-Source: com.github.writeas.writeas-gtk
+Source: writeas-gtk
 Section: x11
 Priority: extra
 Maintainer: Write.as <hello@write.as>
@@ -9,7 +9,7 @@ Build-Depends: meson,
                valac (>= 0.36)
 Standards-Version: 3.9.3
 
-Package: com.github.writeas.writeas-gtk
+Package: writeas-gtk
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, writeas-cli
 Recommends: fonts-lora, fonts-open-sans, fonts-hack
