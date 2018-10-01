@@ -1,4 +1,4 @@
-executable('writeas-gtk',
+executable('com.github.writeas.writeas-gtk',
     'application.vala',
     'window.vala',
 
