@@ -2,7 +2,7 @@
 <component type="desktop-application">
   <id>com.github.writeas.writeas-gtk</id>
   <project_license>GPL-3.0+</project_license>
-  <metadata_license>GPL-3.0+</metadata_license>
+  <metadata_license>CC0</metadata_license>
   <name>Write.as</name>
   <summary>Publish a thought in seconds</summary>
 
