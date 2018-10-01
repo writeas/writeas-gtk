@@ -1,4 +1,4 @@
-install_data('icons/write-as.png',
+install_data('icons/com.github.writeas.writeas-gtk.png',
     install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', '128x128', 'apps')
 )
 install_data('icons/writeas-bright-dark.png',
