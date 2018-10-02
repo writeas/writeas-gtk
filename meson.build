@@ -1,4 +1,4 @@
-project('writeas-gtk', ['vala', 'c'],
+project('com.github.writeas.writeas-gtk', ['vala', 'c'],
     version: '1.0.0',
     license: 'GPL',
     meson_version: '>=0.40.1')
