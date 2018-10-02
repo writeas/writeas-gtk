@@ -11,7 +11,7 @@ endforeach
 install_data('icons/writeas-bright-dark.png',
     install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', '16x16', 'actions'))
 
-install_data('com.github.writeas.writeas-gtk.desktop',
+install_data('writeas-gtk.desktop',
     install_dir: join_paths(get_option('datadir'), 'applications'))
-install_data('com.github.writeas.writeas-gtk.appdata.xml',
+install_data('writeas-gtk.appdata.xml',
     install_dir: join_paths(get_option('datadir'), 'metainfo'))

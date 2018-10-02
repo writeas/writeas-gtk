@@ -22,7 +22,7 @@ public class WriteAs.Application : Gtk.Application {
         Intl.setlocale(LocaleCategory.ALL, "");
         Intl.textdomain("write.as");
 
-        application_id = "com.github.writeas.writeas-gtk.desktop";
+        application_id = "writeas-gtk.desktop";
     }
 
     public override void activate() {
