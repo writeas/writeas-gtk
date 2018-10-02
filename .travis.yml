@@ -35,4 +35,4 @@ script:
 
 branches:
   only:
-    - master
+    - deb-packaging
