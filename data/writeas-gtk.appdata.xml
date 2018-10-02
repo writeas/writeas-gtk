@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <component type="desktop-application">
-  <id>writeas-gtk</id>
+  <id>com.github.writeas.writeas-gtk</id>
   <project_license>GPL-3.0+</project_license>
   <metadata_license>CC0</metadata_license>
   <name>Write.as</name>
@@ -28,7 +28,7 @@
   <update_contact>hello@write.as</update_contact>
 
   <provides>
-    <binary>writeas-gtk</binary>
+    <binary>com.github.writeas.writeas-gtk</binary>
   </provides>
 
   <screenshots>
