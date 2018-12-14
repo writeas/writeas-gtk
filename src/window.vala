@@ -24,7 +24,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private static string data_dir = ".writeas";
     private static string version = "1.0.0";
 
-    private int font_size = 12;
+    private int font_size = 16;
     private bool dark_mode = false;
     private string font = "Lora, 'Palatino Linotype',"
             + "'Book Antiqua', 'New York', 'DejaVu serif', serif";
