@@ -232,7 +232,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             var padding = canvas.get_allocated_width()*0.10;
             var css = ("textview {font-family: %s; font-size: %dpx; padding: 20px;" +
                     " padding-left: %ipx; padding-right: %ipx;" +
-                    " -GtkWidget-cursor-color: #5ac4ee;}").printf(font, font_size,
+                    " caret-color: #5ac4ee;}").printf(font, font_size,
                         (int) padding, (int) padding);
             cur_styles = new Gtk.CssProvider();
             cur_styles.load_from_data(css);
