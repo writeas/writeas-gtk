@@ -24,7 +24,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private static string data_dir = ".writeas";
     private static string version = "1.0.0";
 
-    private int font_size = 12;
+    private int font_size = 16;
     private bool dark_mode = false;
     private string font = "Lora, 'Palatino Linotype',"
             + "'Book Antiqua', 'New York', 'DejaVu serif', serif";
@@ -83,7 +83,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         init_folder();
         try {
             open_file(draft_file());
-        } catch (Error err) {canvas.buffer.text = err.message;}
+        } catch (Error err) {}
         restore_styles();
 
         set_default_size(800, 600);
@@ -190,7 +190,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         var styles = option.get_style_context();
         var provider = new Gtk.CssProvider();
         try {
-            provider.load_from_data("* {font: %s;}".printf(families));
+            provider.load_from_data("* {font-family: %s;}".printf(families));
             styles.add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         } catch (Error e) {
             warning(e.message);
@@ -230,9 +230,9 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
                 Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(), cur_styles);
 
             var padding = canvas.get_allocated_width()*0.10;
-            var css = ("GtkTextView {font: %s; font-size: %dpx; padding: 20px;" +
+            var css = ("textview {font-family: %s; font-size: %dpx; padding: 20px;" +
                     " padding-left: %ipx; padding-right: %ipx;" +
-                    " -GtkWidget-cursor-color: #5ac4ee;}").printf(font, font_size,
+                    " caret-color: #5ac4ee;}").printf(font, font_size,
                         (int) padding, (int) padding);
             cur_styles = new Gtk.CssProvider();
             cur_styles.load_from_data(css);
