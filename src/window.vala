@@ -83,7 +83,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         init_folder();
         try {
             open_file(draft_file());
-        } catch (Error err) {canvas.buffer.text = err.message;}
+        } catch (Error err) {}
         restore_styles();
 
         set_default_size(800, 600);
