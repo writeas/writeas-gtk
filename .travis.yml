@@ -22,3 +22,6 @@ install:
 
 script:
   - houston ci
+
+notifications:
+  email: false
