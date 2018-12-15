@@ -5,6 +5,12 @@ Android. It lets you compose and publish posts to [Write.as](https://write.as/).
 
 For a UI toolkit it uses GTK, and relies on the [writeas-cli](https://github.com/writeas/writeas-cli) for API calls and post management.
 
+---
+
+**This is a fork of the [writeas-gtk application](https://code.as/writeas/writeas-gtk), containing necessary changes to release the app for elementaryOS.** 
+
+This repo shouldn't be used by other package maintainers. Version 1.0.x numbers are out of sync with the [official releases](https://code.as/writeas/writeas-gtk/releases) while we try to get the app submitted to AppCenter (see [#5](https://github.com/writeas/writeas-gtk/issues/5)).
+
 ## Usage
 
 See the [User Guide](https://code.as/writeas/writeas-gtk/src/branch/master/USER_GUIDE.md).
