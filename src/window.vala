@@ -19,7 +19,7 @@
 public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private Gtk.TextView canvas;
     private Gtk.HeaderBar header;
-    private Gtk.ToggleButton darkmode_button;
+    private Granite.ModeSwitch darkmode_switch;
 
     private static string data_dir = ".writeas";
     private static string version = "1.0.1";
@@ -141,24 +141,19 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         });
         header.pack_end(publish_button);
 
-        darkmode_button = new Gtk.ToggleButton();
-        darkmode_button.tooltip_text = _("Toggle dark theme");
-        // NOTE the fallback icon is a bit of a meaning stretch, but it works.
-        var icon_theme = Gtk.IconTheme.get_default();
-        darkmode_button.image = new Gtk.Image.from_icon_name(
-                icon_theme.has_icon("writeas-bright-dark") ?
-                    "writeas-bright-dark" : "weather-clear-night",
-                Gtk.IconSize.SMALL_TOOLBAR);
-        darkmode_button.draw_indicator = false;
+        var darkmode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        darkmode_switch.primary_icon_tooltip_text = ("Light theme");
+        darkmode_switch.secondary_icon_tooltip_text = ("Dark theme");
+        darkmode_switch.valign = Gtk.Align.CENTER;
         var settings = Gtk.Settings.get_default();
-        darkmode_button.toggled.connect(() => {
-            settings.gtk_application_prefer_dark_theme = darkmode_button.active;
-            dark_mode = darkmode_button.active;
+        darkmode_switch.notify["active"].connect(() => {
+            settings.gtk_application_prefer_dark_theme = darkmode_switch.active;
+            dark_mode = darkmode_switch.active;
             if (!is_initializing) theme_save();
 
             canvas.grab_focus();
         });
-        if (supports_dark_theme()) header.pack_end(darkmode_button);
+        if (supports_dark_theme()) header.pack_end(darkmode_switch);
 
         var fonts = new Gtk.MenuButton();
         fonts.tooltip_text = _("Change document font");
@@ -211,7 +206,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             theme.load_from_file(get_data_dir() + "/prefs.ini", KeyFileFlags.NONE);
 
             dark_mode = theme.get_boolean("Theme", "darkmode");
-            darkmode_button.set_active(dark_mode);
+            darkmode_switch.active = dark_mode;
             Gtk.Settings.get_default().gtk_application_prefer_dark_theme = dark_mode;
             font_size = theme.get_integer("Theme", "fontsize");
             font = theme.get_string("Post", "font");
@@ -337,7 +332,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
         // Toggle theme with Ctrl+T
         accels.connect(Gdk.Key.T, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE | Gtk.AccelFlags.LOCKED, (g,a,k,m) => {
-            darkmode_button.set_active(!darkmode_button.get_active());
+            darkmode_switch.active = !darkmode_switch.active;
             return true;
         });
 
