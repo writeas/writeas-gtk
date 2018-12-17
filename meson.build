@@ -11,3 +11,6 @@ config_h_dir = include_directories('.')
 
 subdir('data')
 subdir('src')
+
+meson.add_install_script('meson/post_install.py')
+
