@@ -134,6 +134,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
         var publish_button = new Gtk.Button.from_icon_name("document-send",
                 Gtk.IconSize.SMALL_TOOLBAR);
+        publish_button.tooltip_text = _("Publish to Write.as on the web");
         publish_button.clicked.connect(() => {
             canvas.buffer.text += "\n\n" + publish();
 
