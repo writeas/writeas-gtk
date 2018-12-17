@@ -5,7 +5,6 @@ import subprocess
 
 prefix = os.environ.get('MESON_INSTALL_PREFIX', '/usr/local')
 datadir = os.path.join(prefix, 'share')
-schemadir = os.path.join(os.environ['MESON_INSTALL_PREFIX'], 'share', 'glib-2.0', 'schemas')
 
 # Packaging tools define DESTDIR and this isn't needed for them
 if 'DESTDIR' not in os.environ:
