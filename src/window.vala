@@ -133,7 +133,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         set_titlebar(header);
 
         var publish_button = new Gtk.Button.from_icon_name("document-send",
-                Gtk.IconSize.SMALL_TOOLBAR);
+                Gtk.IconSize.LARGE_TOOLBAR);
+        publish_button.tooltip_text = _("Publish to Write.as on the web");
         publish_button.clicked.connect(() => {
             canvas.buffer.text += "\n\n" + publish();
 
@@ -157,7 +158,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
         var fonts = new Gtk.MenuButton();
         fonts.tooltip_text = _("Change document font");
-        fonts.image = new Gtk.Image.from_icon_name("font-x-generic", Gtk.IconSize.SMALL_TOOLBAR);
+        fonts.image = new Gtk.Image.from_icon_name("font-x-generic", Gtk.IconSize.LARGE_TOOLBAR);
         fonts.popup = new Gtk.Menu();
         header.pack_start(fonts);
 
