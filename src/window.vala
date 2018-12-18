@@ -142,7 +142,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         });
         header.pack_end(publish_button);
 
-        var darkmode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        darkmode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
         darkmode_switch.primary_icon_tooltip_text = ("Light theme");
         darkmode_switch.secondary_icon_tooltip_text = ("Dark theme");
         darkmode_switch.valign = Gtk.Align.CENTER;
