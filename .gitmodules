@@ -1,0 +1,3 @@
+[submodule "src/github.com/writeas/writeas-cli"]
+	path = src/github.com/writeas/writeas-cli
+	url = https://github.com/writeas/writeas-cli.git
