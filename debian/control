@@ -14,5 +14,5 @@ Standards-Version: 3.9.3
 Package: com.github.writeas.writeas-gtk
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Recommends: fonts-lora, fonts-open-sans, fonts-hack
+Recommends: fonts-open-sans, fonts-hack
 Description: A distraction free and private writing tool, with built-in publishing.

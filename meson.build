@@ -13,3 +13,4 @@ run_target('build', command: 'build-cli.sh')
 
 subdir('data')
 subdir('src')
+subdir('fonts/lora')
