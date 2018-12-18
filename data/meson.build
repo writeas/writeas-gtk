@@ -8,9 +8,6 @@ foreach i : icon_sizes
     )
 endforeach
 
-install_data('icons/writeas-bright-dark.png',
-    install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', '16x16', 'actions'))
-
 install_data('com.github.writeas.writeas-gtk.desktop',
     install_dir: join_paths(get_option('datadir'), 'applications'))
 install_data('com.github.writeas.writeas-gtk.appdata.xml',
