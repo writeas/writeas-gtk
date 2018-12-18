@@ -15,4 +15,3 @@ install_data('com.github.writeas.writeas-gtk.desktop',
     install_dir: join_paths(get_option('datadir'), 'applications'))
 install_data('com.github.writeas.writeas-gtk.appdata.xml',
     install_dir: join_paths(get_option('datadir'), 'metainfo'))
-install_data('writeas', install_dir: get_option('bindir'))
