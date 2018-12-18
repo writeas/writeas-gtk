@@ -4,3 +4,4 @@
 build
 .ninja_*
 build.ninja
+data/writeas
