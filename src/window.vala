@@ -226,15 +226,16 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
                 Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(), cur_styles);
 
             var padding = canvas.get_allocated_width()*0.10;
-            var css = ("textview {font-family: %s; font-size: %dpx; padding: 20px;" +
-                    " padding-left: %ipx; padding-right: %ipx;" +
-                    " caret-color: #5ac4ee;}").printf(font, font_size,
-                        (int) padding, (int) padding);
+            var css = ("textview {font-family: %s; font-size: %dpx; padding: 20px 0;" +
+                    " caret-color: #5ac4ee;}").printf(font, font_size);
             cur_styles = new Gtk.CssProvider();
             cur_styles.load_from_data(css);
 
             Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
                     cur_styles, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            // TODO: set left-margin and right-margin on the sourceview to `padding`
+            canvas.left_margin = canvas.right_margin = (int) padding;
 
             if (save_theme) theme_save();
         } catch (Error e) {
