@@ -234,7 +234,6 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
                     cur_styles, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            // TODO: set left-margin and right-margin on the sourceview to `padding`
             canvas.left_margin = canvas.right_margin = (int) padding;
 
             if (save_theme) theme_save();
