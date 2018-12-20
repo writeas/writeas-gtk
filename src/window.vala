@@ -25,7 +25,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private Gtk.RadioMenuItem font_wrap_option;
 
     private static string data_dir = ".writeas";
-    private static string version = "1.0.1";
+    private static string version = "1.0.2";
 
     private int font_size = 16;
     private bool dark_mode = false;
