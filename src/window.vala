@@ -20,6 +20,9 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private Gtk.TextView canvas;
     private Gtk.HeaderBar header;
     private Granite.ModeSwitch darkmode_switch;
+    private Gtk.RadioMenuItem font_serif_option;
+    private Gtk.RadioMenuItem font_sans_option;
+    private Gtk.RadioMenuItem font_wrap_option;
 
     private static string data_dir = ".writeas";
     private static string version = "1.0.1";
@@ -162,10 +165,10 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         fonts.popup = new Gtk.Menu();
         header.pack_start(fonts);
 
-        build_fontoption(fonts.popup, _("Serif"), "serif", font);
-        build_fontoption(fonts.popup, _("Sans-serif"), "sans",
+        font_serif_option = build_fontoption(fonts.popup, _("Serif"), "serif", font);
+        font_sans_option = build_fontoption(fonts.popup, _("Sans-serif"), "sans",
                 "'Open Sans', 'Segoe UI', Tahoma, Arial, sans-serif");
-        build_fontoption(fonts.popup, _("Monospace"), "wrap", "Hack, consolas," +
+        font_wrap_option = build_fontoption(fonts.popup, _("Monospace"), "wrap", "Hack, consolas," +
                 "Menlo-Regular, Menlo, Monaco, 'ubuntu mono', monospace");
         fonts.popup.show_all();
     }
@@ -193,6 +196,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         }
 
         menu.add(option);
+
+        return option;
     }
 
     public override void grab_focus() {
@@ -212,6 +217,15 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             font_size = theme.get_integer("Theme", "fontsize");
             font = theme.get_string("Post", "font");
             fontstyle = theme.get_string("Post", "fontstyle");
+
+            // Select the current font in the menu
+            if (fontstyle == "serif") {
+                font_serif_option.set_active(true);
+            } else if (fontstyle == "sans") {
+                font_sans_option.set_active(true);
+            } else if (fontstyle == "wrap") {
+                font_wrap_option.set_active(true);
+            }
 
             adjust_text_style(false);
         } catch (Error err) {/* No biggy... */}
