@@ -174,7 +174,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     }
 
     private unowned SList<Gtk.RadioMenuItem>? font_options = null;
-    private void build_fontoption(Gtk.Menu menu,
+    private Gtk.RadioMenuItem build_fontoption(Gtk.Menu menu,
             string label, string fontstyle, string families) {
         var option = new Gtk.RadioMenuItem.with_label(font_options, label);
         font_options = option.get_group();
