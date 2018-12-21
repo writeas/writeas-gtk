@@ -20,9 +20,12 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
     private Gtk.TextView canvas;
     private Gtk.HeaderBar header;
     private Granite.ModeSwitch darkmode_switch;
+    private Gtk.RadioMenuItem font_serif_option;
+    private Gtk.RadioMenuItem font_sans_option;
+    private Gtk.RadioMenuItem font_wrap_option;
 
     private static string data_dir = ".writeas";
-    private static string version = "1.0.1";
+    private static string version = "1.0.2";
 
     private int font_size = 16;
     private bool dark_mode = false;
@@ -162,16 +165,16 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         fonts.popup = new Gtk.Menu();
         header.pack_start(fonts);
 
-        build_fontoption(fonts.popup, _("Serif"), "serif", font);
-        build_fontoption(fonts.popup, _("Sans-serif"), "sans",
+        font_serif_option = build_fontoption(fonts.popup, _("Serif"), "serif", font);
+        font_sans_option = build_fontoption(fonts.popup, _("Sans-serif"), "sans",
                 "'Open Sans', 'Segoe UI', Tahoma, Arial, sans-serif");
-        build_fontoption(fonts.popup, _("Monospace"), "wrap", "Hack, consolas," +
+        font_wrap_option = build_fontoption(fonts.popup, _("Monospace"), "wrap", "Hack, consolas," +
                 "Menlo-Regular, Menlo, Monaco, 'ubuntu mono', monospace");
         fonts.popup.show_all();
     }
 
     private unowned SList<Gtk.RadioMenuItem>? font_options = null;
-    private void build_fontoption(Gtk.Menu menu,
+    private Gtk.RadioMenuItem build_fontoption(Gtk.Menu menu,
             string label, string fontstyle, string families) {
         var option = new Gtk.RadioMenuItem.with_label(font_options, label);
         font_options = option.get_group();
@@ -193,6 +196,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         }
 
         menu.add(option);
+
+        return option;
     }
 
     public override void grab_focus() {
@@ -213,6 +218,15 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             font = theme.get_string("Post", "font");
             fontstyle = theme.get_string("Post", "fontstyle");
 
+            // Select the current font in the menu
+            if (fontstyle == "serif") {
+                font_serif_option.set_active(true);
+            } else if (fontstyle == "sans") {
+                font_sans_option.set_active(true);
+            } else if (fontstyle == "wrap") {
+                font_wrap_option.set_active(true);
+            }
+
             adjust_text_style(false);
         } catch (Error err) {/* No biggy... */}
     }
@@ -226,15 +240,15 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
                 Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(), cur_styles);
 
             var padding = canvas.get_allocated_width()*0.10;
-            var css = ("textview {font-family: %s; font-size: %dpx; padding: 20px;" +
-                    " padding-left: %ipx; padding-right: %ipx;" +
-                    " caret-color: #5ac4ee;}").printf(font, font_size,
-                        (int) padding, (int) padding);
+            var css = ("textview {font-family: %s; font-size: %dpx; padding: 20px 0;" +
+                    " caret-color: #5ac4ee;}").printf(font, font_size);
             cur_styles = new Gtk.CssProvider();
             cur_styles.load_from_data(css);
 
             Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
                     cur_styles, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            canvas.left_margin = canvas.right_margin = (int) padding;
 
             if (save_theme) theme_save();
         } catch (Error e) {

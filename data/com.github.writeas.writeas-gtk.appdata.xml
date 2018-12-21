@@ -77,6 +77,15 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="1.0.2" date="2018-12-20">
+      <description>
+         <p>This update fixes a few minor visual issues.</p>
+         <ul>
+           <li>Fix black bar that appears in the editor on elementary OS</li>
+           <li>Fix currently-selected font not reflected in menu when app first loads</li>
+         </ul>
+      </description>
+    </release>
     <release version="1.0.1" date="2018-12-14">
       <description>
          <p>GTK updates and fixes.</p>

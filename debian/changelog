@@ -1,3 +1,10 @@
+writeas-gtk (1.0.2-3) xenial; urgency=medium
+
+  * Fix black bar that appears in the editor on elementary OS
+  * Fix currently-selected font not reflected in menu when app first loads
+
+ -- Write.as <hello@write.as>  Thu, 20 Dec 2018 14:20:45 -0500
+
 writeas-gtk (1.0.1-2) xenial; urgency=medium
 
   * Fix fonts, padding, cursor color
