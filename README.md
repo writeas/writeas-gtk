@@ -1,4 +1,8 @@
 # Write.as GTK App
+
+[![Get the app from Write.as](https://write.as/img/downloadwriteas.png)](https://write.as/apps/desktop) &nbsp;
+[![Get the app on AppCenter](https://write.as/img/appcenter.png)](https://appcenter.elementary.io/com.github.writeas.writeas-gtk)
+
 A Write.as desktop app that targets all freedesktop.org compliant desktops, e.g. 
 GNU/Linux, FreeBSD, etc; basically everything except Windows, Mac, iOS, and 
 Android. It lets you compose and publish posts to [Write.as](https://write.as/).
