@@ -137,7 +137,10 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
         var publish_button = new Gtk.Button.from_icon_name("document-send",
                 Gtk.IconSize.LARGE_TOOLBAR);
-        publish_button.tooltip_text = _("Publish to Write.as on the web");
+        publish_button.tooltip_markup = Granite.markup_accel_tooltip (
+            {"<Ctrl>Return"},
+            _("Publish to Write.as on the web")
+        );
         publish_button.clicked.connect(() => {
             canvas.buffer.text += "\n\n" + publish();
 
@@ -148,6 +151,10 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         darkmode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
         darkmode_switch.primary_icon_tooltip_text = ("Light theme");
         darkmode_switch.secondary_icon_tooltip_text = ("Dark theme");
+        darkmode_switch.tooltip_markup = Granite.markup_accel_tooltip (
+            {"<Ctrl>T"},
+            _("Toggle light/dark theme")
+        );
         darkmode_switch.valign = Gtk.Align.CENTER;
         var settings = Gtk.Settings.get_default();
         darkmode_switch.notify["active"].connect(() => {
