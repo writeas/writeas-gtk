@@ -1,7 +1,8 @@
 executable('com.github.writeas.writeas-gtk',
     'application.vala',
     'window.vala',
-    'Widgets/ModeSwitch.vala',
+    'Granite/Accels.vala',
+    'Granite/ModeSwitch.vala',
 
     c_args: ['-include', 'config.h'],
     link_args: '-lm',
