@@ -1,3 +1,5 @@
+// From https://github.com/elementary/granite/blob/2066b377226cf327cb2d5399b6b40a2d36d47b11/lib/Widgets/ModeSwitch.vala
+
 /*
 * Copyright (c) 2018 elementary, Inc. (https://elementary.io)
 *
@@ -16,8 +18,6 @@
 * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301 USA
 */
-
-// From https://github.com/elementary/granite/blob/2066b377226cf327cb2d5399b6b40a2d36d47b11/lib/Widgets/ModeSwitch.vala
 
 /**
  * ModeSwitch is a selection control for choosing between two options that can be described with an icon.
