@@ -9,7 +9,7 @@ conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
-run_target('build', command: 'build-cli.sh')
+run_target('build', command: 'meson/build-cli.sh')
 
 subdir('data')
 subdir('src')
