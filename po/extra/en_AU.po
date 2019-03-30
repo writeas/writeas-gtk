@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-30 18:20+0100\n"
+"POT-Creation-Date: 2019-03-30 18:37+0100\n"
 "PO-Revision-Date: 2019-03-30 18:20+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,11 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: data/com.github.writeas.writeas-gtk.desktop.in:4
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:6
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:24
-#: data/com.github.writeas.writeas-gtk.desktop.in:4
 msgid "Write.as"
 msgstr "Write.as"
+
+#: data/com.github.writeas.writeas-gtk.desktop.in:5
+msgid "Publish a thought in seconds."
+msgstr "Publish a thought in seconds."
+
+#: data/com.github.writeas.writeas-gtk.desktop.in:7
+msgid "com.github.writeas.writeas-gtk"
+msgstr "com.github.writeas.writeas-gtk"
+
+#: data/com.github.writeas.writeas-gtk.desktop.in:11
+msgid "blog;text;editor;publish;"
+msgstr "blog;text;editor;publish;"
 
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:7
 msgid "Publish a thought in seconds"
@@ -75,8 +87,8 @@ msgid "Dark mode on platforms that support it"
 msgstr "Dark mode on platforms that support it"
 
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:19
-msgid "example"
-msgstr "example"
+msgid "Publish to Write.as and share your post"
+msgstr ""
 
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:20
 msgid "Manage published posts with the built-in command-line interface"
@@ -134,14 +146,5 @@ msgstr "Save draft as another file"
 msgid "Publish anonymously to Write.as"
 msgstr "Publish anonymously to Write.as"
 
-#: data/com.github.writeas.writeas-gtk.desktop.in:5
-msgid "Publish a thought in seconds."
-msgstr "Publish a thought in seconds."
-
-#: data/com.github.writeas.writeas-gtk.desktop.in:7
-msgid "com.github.writeas.writeas-gtk"
-msgstr "com.github.writeas.writeas-gtk"
-
-#: data/com.github.writeas.writeas-gtk.desktop.in:11
-msgid "blog;text;editor;publish;"
-msgstr "blog;text;editor;publish;"
+#~ msgid "example"
+#~ msgstr "example"

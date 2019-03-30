@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-30 18:20+0100\n"
+"POT-Creation-Date: 2019-03-30 18:37+0100\n"
 "PO-Revision-Date: 2019-03-30 18:20+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,10 +18,22 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 
+#: data/com.github.writeas.writeas-gtk.desktop.in:4
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:6
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:24
-#: data/com.github.writeas.writeas-gtk.desktop.in:4
 msgid "Write.as"
+msgstr ""
+
+#: data/com.github.writeas.writeas-gtk.desktop.in:5
+msgid "Publish a thought in seconds."
+msgstr ""
+
+#: data/com.github.writeas.writeas-gtk.desktop.in:7
+msgid "com.github.writeas.writeas-gtk"
+msgstr ""
+
+#: data/com.github.writeas.writeas-gtk.desktop.in:11
+msgid "blog;text;editor;publish;"
 msgstr ""
 
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:7
@@ -69,7 +81,7 @@ msgid "Dark mode on platforms that support it"
 msgstr ""
 
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:19
-msgid "example"
+msgid "Publish to Write.as and share your post"
 msgstr ""
 
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:20
@@ -126,16 +138,4 @@ msgstr ""
 
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:106
 msgid "Publish anonymously to Write.as"
-msgstr ""
-
-#: data/com.github.writeas.writeas-gtk.desktop.in:5
-msgid "Publish a thought in seconds."
-msgstr ""
-
-#: data/com.github.writeas.writeas-gtk.desktop.in:7
-msgid "com.github.writeas.writeas-gtk"
-msgstr ""
-
-#: data/com.github.writeas.writeas-gtk.desktop.in:11
-msgid "blog;text;editor;publish;"
 msgstr ""
