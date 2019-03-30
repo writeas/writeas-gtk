@@ -1,0 +1,100 @@
+# English translations for com.github.writeas.writeas-gtk package.
+# Copyright (C) 2019 THE com.github.writeas.writeas-gtk'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.writeas.writeas-gtk package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.writeas.writeas-gtk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-30 18:20+0100\n"
+"PO-Revision-Date: 2019-03-30 18:20+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en_AU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/window.vala:41
+msgid "Write.as"
+msgstr "Write.as"
+
+#: src/window.vala:56
+#, c-format
+msgid "%i word"
+msgstr "%i word"
+
+#: src/window.vala:56
+#, c-format
+msgid "%i words"
+msgstr "%i words"
+
+#: src/window.vala:142
+msgid "Publish to Write.as on the web"
+msgstr "Publish to Write.as on the web"
+
+#: src/window.vala:152
+msgid "Light theme"
+msgstr "Light theme"
+
+#: src/window.vala:153
+msgid "Dark theme"
+msgstr "Dark theme"
+
+#: src/window.vala:156
+msgid "Toggle light/dark theme"
+msgstr "Toggle light/dark theme"
+
+#: src/window.vala:170
+msgid "Change document font"
+msgstr "Change document font"
+
+#: src/window.vala:175
+msgid "Serif"
+msgstr "Serif"
+
+#: src/window.vala:176
+msgid "Sans-serif"
+msgstr "Sans-serif"
+
+#: src/window.vala:178
+msgid "Monospace"
+msgstr "Monospace"
+
+#: src/window.vala:372
+msgid "Save as"
+msgstr "Save as"
+
+#: src/window.vala:385
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/Granite/Accels.vala:42
+msgid "Shift"
+msgstr "Shift"
+
+#: src/Granite/Accels.vala:46
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: src/Granite/Accels.vala:50
+msgid "Alt"
+msgstr "Alt"
+
+#: src/Granite/Accels.vala:69
+msgid "Minus"
+msgstr "Minus"
+
+#: src/Granite/Accels.vala:74
+msgid "Plus"
+msgstr "Plus"
+
+#: src/Granite/Accels.vala:78
+msgid "Enter"
+msgstr "Enter"
+
+#: src/Granite/Accels.vala:124
+msgid ", "
+msgstr ", "

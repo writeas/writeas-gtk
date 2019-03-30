@@ -38,7 +38,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     construct {
         header = new Gtk.HeaderBar();
-        header.title = "Write.as";
+        header.title = _("Write.as");
         construct_toolbar();
         build_keyboard_shortcuts();
 
@@ -53,7 +53,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             // TODO This word count algorithm may be quite naive
             //      and could do improvement.
             var word_count = canvas.buffer.text.split(" ").length;
-            header.subtitle = ngettext("%i word","%i words",word_count).printf(word_count);
+            header.subtitle = ngettext(_("%i word"),_("%i words"),word_count).printf(word_count);
 
             text_changed = true;
         });
@@ -149,8 +149,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         header.pack_end(publish_button);
 
         darkmode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
-        darkmode_switch.primary_icon_tooltip_text = ("Light theme");
-        darkmode_switch.secondary_icon_tooltip_text = ("Dark theme");
+        darkmode_switch.primary_icon_tooltip_text = _("Light theme");
+        darkmode_switch.secondary_icon_tooltip_text = _("Dark theme");
         darkmode_switch.tooltip_markup = Granite.markup_accel_tooltip (
             {"<Ctrl>T"},
             _("Toggle light/dark theme")

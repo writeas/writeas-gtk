@@ -1,0 +1,99 @@
+# Sardinian translations for com.github.writeas.writeas-gtk package.
+# Copyright (C) 2019 THE com.github.writeas.writeas-gtk'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.writeas.writeas-gtk package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.writeas.writeas-gtk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-30 18:20+0100\n"
+"PO-Revision-Date: 2019-03-30 18:20+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: sc\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/window.vala:41
+msgid "Write.as"
+msgstr ""
+
+#: src/window.vala:56
+#, c-format
+msgid "%i word"
+msgstr ""
+
+#: src/window.vala:56
+#, c-format
+msgid "%i words"
+msgstr ""
+
+#: src/window.vala:142
+msgid "Publish to Write.as on the web"
+msgstr ""
+
+#: src/window.vala:152
+msgid "Light theme"
+msgstr ""
+
+#: src/window.vala:153
+msgid "Dark theme"
+msgstr ""
+
+#: src/window.vala:156
+msgid "Toggle light/dark theme"
+msgstr ""
+
+#: src/window.vala:170
+msgid "Change document font"
+msgstr ""
+
+#: src/window.vala:175
+msgid "Serif"
+msgstr ""
+
+#: src/window.vala:176
+msgid "Sans-serif"
+msgstr ""
+
+#: src/window.vala:178
+msgid "Monospace"
+msgstr ""
+
+#: src/window.vala:372
+msgid "Save as"
+msgstr ""
+
+#: src/window.vala:385
+msgid "Cancel"
+msgstr ""
+
+#: src/Granite/Accels.vala:42
+msgid "Shift"
+msgstr ""
+
+#: src/Granite/Accels.vala:46
+msgid "Ctrl"
+msgstr ""
+
+#: src/Granite/Accels.vala:50
+msgid "Alt"
+msgstr ""
+
+#: src/Granite/Accels.vala:69
+msgid "Minus"
+msgstr ""
+
+#: src/Granite/Accels.vala:74
+msgid "Plus"
+msgstr ""
+
+#: src/Granite/Accels.vala:78
+msgid "Enter"
+msgstr ""
+
+#: src/Granite/Accels.vala:124
+msgid ", "
+msgstr ""
