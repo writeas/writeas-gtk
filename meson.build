@@ -17,7 +17,7 @@ run_target('build', command: 'meson/build-cli.sh')
 subdir('data')
 subdir('po')
 subdir('src')
-#subdir('fonts/lora')
+subdir('fonts/lora')
 
 meson.add_install_script('meson/post_install.py')
 
