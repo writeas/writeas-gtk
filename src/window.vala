@@ -82,7 +82,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         stdout.printf("writeas-gtk v%s\n", version);
 
         set_application(app);
-        icon_name = "com.github.writeas.writeas-gtk";
+        icon_name = APP_ID;
         init_folder();
         try {
             open_file(draft_file());
