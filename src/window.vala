@@ -53,7 +53,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
             // TODO This word count algorithm may be quite naive
             //      and could do improvement.
             var word_count = canvas.buffer.text.split(" ").length;
-            header.subtitle = ngettext(_("%i word"),_("%i words"),word_count).printf(word_count);
+            header.subtitle = ngettext("%i word","%i words",word_count).printf(word_count);
 
             text_changed = true;
         });
