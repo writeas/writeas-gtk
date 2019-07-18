@@ -38,7 +38,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     construct {
         header = new Gtk.HeaderBar();
-        header.title = _("Write.as");
+        header.title = "Write.as";
         construct_toolbar();
         build_keyboard_shortcuts();
 

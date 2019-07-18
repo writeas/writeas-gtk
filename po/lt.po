@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.writeas.writeas-gtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-30 18:50+0100\n"
+"POT-Creation-Date: 2019-07-18 14:21+0200\n"
 "PO-Revision-Date: 2019-03-30 18:20+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,19 +18,13 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/window.vala:41
-msgid "Write.as"
-msgstr ""
-
 #: src/window.vala:56
 #, c-format
 msgid "%i word"
-msgstr ""
-
-#: src/window.vala:56
-#, c-format
-msgid "%i words"
-msgstr ""
+msgid_plural "%i words"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: src/window.vala:142
 msgid "Publish to Write.as on the web"
