@@ -5,6 +5,3 @@
 	path = fonts/lora
 	url = https://code.as/writeas/fonts-lora.git
 	branch = include
-[submodule "src/code.as/core/socks"]
-	path = src/code.as/core/socks
-	url = https://code.as/core/socks.git
