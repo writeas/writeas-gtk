@@ -8,7 +8,7 @@ Build-Depends: meson,
                libgtksourceview-3.0-dev,
                valac (>= 0.36),
                golang-go,
-               gb
+               git
 Standards-Version: 3.9.3
 
 Package: com.github.writeas.writeas-gtk
