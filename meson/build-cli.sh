@@ -2,7 +2,6 @@
 
 exec_name=writeas
 BIN_DIR="$MESON_BUILD_ROOT"/bin
-export GOPATH="$MESON_BUILD_ROOT"/go
 
 echo "Building $exec_name CLI..."
 # go get to fetch dependencies
