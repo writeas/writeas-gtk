@@ -135,8 +135,13 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         header.show_close_button = true;
         set_titlebar(header);
 
+        var icon_size = Gtk.IconSize.SMALL_TOOLBAR;
+        if (BUILD_PLATFORM == "elementary") {
+            icon_size = Gtk.IconSize.LARGE_TOOLBAR;
+        }
+
         var publish_button = new Gtk.Button.from_icon_name("document-send",
-                Gtk.IconSize.LARGE_TOOLBAR);
+            icon_size);
         publish_button.tooltip_markup = Granite.markup_accel_tooltip (
             {"<Ctrl>Return"},
             _("Publish to Write.as on the web")
@@ -168,7 +173,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
         var fonts = new Gtk.MenuButton();
         fonts.tooltip_text = _("Change document font");
-        fonts.image = new Gtk.Image.from_icon_name("font-x-generic", Gtk.IconSize.LARGE_TOOLBAR);
+        fonts.image = new Gtk.Image.from_icon_name("font-x-generic", icon_size);
         fonts.popup = new Gtk.Menu();
         header.pack_start(fonts);
 

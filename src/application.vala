@@ -18,6 +18,7 @@
 */
 
 extern const string APP_ID;
+extern const string BUILD_PLATFORM;
 
 public class WriteAs.Application : Gtk.Application {
     construct {

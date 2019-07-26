@@ -5,7 +5,8 @@ project('writeas-gtk', ['vala', 'c'],
 
 i18n = import('i18n')
 
-if get_option('platform') == 'elementary'
+build_platform = get_option('platform')
+if build_platform == 'elementary'
   app_id = 'com.github.writeas.writeas-gtk'
 else
   app_id = 'writeas-gtk'
@@ -14,6 +15,7 @@ endif
 conf = configuration_data()
 conf.set_quoted('GETTEXT_PACKAGE', app_id)
 conf.set_quoted('APP_ID', app_id)
+conf.set_quoted('BUILD_PLATFORM', build_platform)
 config_h = configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
