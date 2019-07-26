@@ -16,13 +16,17 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
+
+extern const string APP_ID;
+extern const string BUILD_PLATFORM;
+
 public class WriteAs.Application : Gtk.Application {
     construct {
         this.flags |= ApplicationFlags.HANDLES_OPEN;
         Intl.setlocale(LocaleCategory.ALL, "");
         Intl.textdomain("write.as");
 
-        application_id = "com.github.writeas.writeas-gtk.desktop";
+        application_id = APP_ID + ".desktop";
     }
 
     public override void activate() {
