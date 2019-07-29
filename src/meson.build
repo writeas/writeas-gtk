@@ -1,4 +1,10 @@
-executable(app_id,
+if build_platform == 'elementary'
+  executable = 'com.github.writeas.writeas-gtk'
+else
+  executable = 'writeas-gtk'
+endif
+
+executable(executable,
     'application.vala',
     'window.vala',
     'Granite/Accels.vala',

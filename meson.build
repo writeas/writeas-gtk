@@ -9,7 +9,7 @@ build_platform = get_option('platform')
 if build_platform == 'elementary'
   app_id = 'com.github.writeas.writeas-gtk'
 else
-  app_id = 'writeas-gtk'
+  app_id = 'com.abunchtell.WriteAsDesktop'
 endif
 
 conf = configuration_data()
