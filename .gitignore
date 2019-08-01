@@ -2,6 +2,8 @@
 *~
 
 build
+_build/
+.flatpak-builder/
 .ninja_*
 build.ninja
 data/writeas
