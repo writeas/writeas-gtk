@@ -22,7 +22,7 @@ override_dh_auto_configure:
 	cd debian/build && meson --prefix=/usr ../.. -Dplatform=elementary -Dauto_build_cli=true
 
 override_dh_auto_build:
-	cd debian/build && ninja -v && ninja build
+	cd debian/build && ninja -v
 
 override_dh_auto_test:
 	cd debian/build && ninja test
