@@ -1,0 +1,73 @@
+{
+    "app-id": "com.abunchtell.WriteAsDesktop",
+    "base": "io.elementary.BaseApp",
+    "base-version": "juno",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.32",
+    "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.golang"
+    ],
+    "command": "writeas-gtk",
+    "finish-args": [
+        "--socket=wayland",
+        "--share=ipc",
+        "--socket=x11",
+        "--device=dri",
+        "--share=network"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/golang/bin/",
+        "build-args" : [
+            "--share=network"
+        ],
+        "env": {
+            "GOPATH": "/run/build/go"
+        }
+    },
+    "modules": [
+        {
+            "name": "gb",
+            "buildsystem": "simple",
+            "build-commands": [
+                "/usr/lib/sdk/golang/enable.sh; env GOPATH=\"$(pwd)\" go build github.com/constabulary/gb/cmd/gb",
+                "install -Dm0755 -t /app/bin gb"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pkg/errors.git",
+                    "dest": "src/github.com/pkg/errors"
+                },
+                {
+                    "type": "git",
+                    "url": "https://github.com/constabulary/gb.git",
+                    "dest": "src/github.com/constabulary/gb"
+                }
+            ]
+        },
+        {
+            "name": "gtksourceview3",
+            "config-opts" : [
+                "--disable-Werror"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/gtksourceview.git",
+                    "branch": "gnome-3-24"
+                }
+            ]
+        },
+        {
+            "name": "writeas-gtk",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/writeas/writeas-gtk.git"
+                }
+            ]
+        }
+    ]
+}
