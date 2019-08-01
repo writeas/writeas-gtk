@@ -22,7 +22,7 @@
             "--share=network"
         ],
         "env": {
-            "GOPATH": "/run/build/go"
+            "GOROOT": "/usr/lib/sdk/golang/"
         }
     },
     "modules": [
@@ -62,6 +62,9 @@
         {
             "name": "writeas-gtk",
             "buildsystem": "meson",
+            "config-opts": [
+                "-Dauto_build_cli=true"
+            ],
             "sources": [
                 {
                     "type": "git",

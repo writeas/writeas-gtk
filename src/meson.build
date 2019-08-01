@@ -4,6 +4,24 @@ else
   executable = 'writeas-gtk'
 endif
 
+if get_option('auto_build_cli')
+  gb = find_program('gb')
+
+  cli_target = custom_target('build-cli',
+      build_by_default: true,
+      output: 'writeas',
+      install: true,
+      install_dir: get_option('bindir'),
+      console: true,
+      command: [
+        cli_build_script,
+        '@SOURCE_ROOT@',
+        '@OUTPUT@',
+        meson.build_root()
+      ]
+  )
+endif
+
 executable(executable,
     'application.vala',
     'window.vala',

@@ -1,7 +1,7 @@
 project('writeas-gtk', ['vala', 'c'],
     version: '1.0.2',
     license: 'GPL',
-    meson_version: '>=0.46.0')
+    meson_version: '>=0.48.0')
 
 i18n = import('i18n')
 
@@ -19,7 +19,7 @@ conf.set_quoted('BUILD_PLATFORM', build_platform)
 config_h = configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
-run_target('build', command: 'meson/build-cli.sh')
+cli_build_script = find_program('meson/build-cli.sh')
 
 subdir('data')
 subdir('src')
