@@ -10,6 +10,7 @@ endforeach
 
 data_conf = configuration_data()
 data_conf.set('app_id', app_id)
+data_conf.set('exec', executable)
 configure_file(
   input: 'com.abunchtell.WriteAsDesktop.desktop.in',
   output: '@0@.desktop'.format(app_id),

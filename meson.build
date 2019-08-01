@@ -8,9 +8,12 @@ i18n = import('i18n')
 build_platform = get_option('platform')
 if build_platform == 'elementary'
   app_id = 'com.github.writeas.writeas-gtk'
+  executable = 'com.github.writeas.writeas-gtk'
 else
   app_id = 'com.abunchtell.WriteAsDesktop'
+  executable = 'writeas-gtk'
 endif
+
 
 conf = configuration_data()
 conf.set_quoted('GETTEXT_PACKAGE', app_id)

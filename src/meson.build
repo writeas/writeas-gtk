@@ -1,9 +1,3 @@
-if build_platform == 'elementary'
-  executable = 'com.github.writeas.writeas-gtk'
-else
-  executable = 'writeas-gtk'
-endif
-
 if get_option('auto_build_cli')
   gb = find_program('gb')
 

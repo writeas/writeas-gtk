@@ -2,7 +2,7 @@
 Type=Application
 Name=Write.as
 Comment=Publish a thought in seconds.
-Exec=@app_id@
+Exec=@exec@
 Icon=@app_id@
 Terminal=false
 MimeType=
