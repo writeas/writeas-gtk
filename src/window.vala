@@ -386,21 +386,18 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
     private File prompt_file(Gtk.FileChooserAction mode, string action)
             throws UserCancellable {
-        var file_chooser = new Gtk.FileChooserDialog(action, this, mode,
-              _("Cancel"), Gtk.ResponseType.CANCEL,
-              action, Gtk.ResponseType.ACCEPT);
-
+        var file_chooser = new Gtk.FileChooserNative(action, this, mode,
+              _("Save"), _("Cancel"));
         file_chooser.select_multiple = false;
         var filter = new Gtk.FileFilter();
         filter.add_mime_type("text/plain");
         file_chooser.set_filter(filter);
 
         var resp = file_chooser.run();
-        file_chooser.close();
         if (resp == Gtk.ResponseType.ACCEPT) {
             return file_chooser.get_file();
         } else {
-            throw new UserCancellable.USER_CANCELLED("FileChooserDialog");
+            throw new UserCancellable.USER_CANCELLED("FileChooserNative");
         }
     }
 
