@@ -60,6 +60,39 @@
             ]
         },
         {
+            "name": "wl-clipboard",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/bugaevc/wl-clipboard.git"
+                }
+            ]
+        },
+        {
+            "name": "libXmu",
+            "config-opts": [
+                "--disable-static",
+                "--disable-docs"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.x.org/releases/individual/lib/libXmu-1.1.2.tar.bz2",
+                    "sha256": "756edc7c383254eef8b4e1b733c3bf1dc061b523c9f9833ac7058378b8349d0b"
+                }
+            ]
+        },
+        {
+            "name": "xclip",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/astrand/xclip.git"
+                }
+            ]
+        },
+        {
             "name": "writeas-gtk",
             "buildsystem": "meson",
             "config-opts": [
