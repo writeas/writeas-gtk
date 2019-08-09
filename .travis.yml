@@ -30,7 +30,7 @@ matrix:
     before_install:
       - ls
       - docker pull christopherdavis/elementary-flatpak-writeas:latest
-      - docker run -v writeas/writeas-gtk:/build/writeas/writeas-gtk -it -d --name flatpak christopherdavis/elementary-flatpak-writeas bash
+      - docker run -v "$(pwd)":/build/writeas/writeas-gtk -it -d --name flatpak christopherdavis/elementary-flatpak-writeas bash
     addons: []
     install: []
     script:
