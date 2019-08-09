@@ -15,7 +15,7 @@
         "--socket=x11",
         "--device=dri",
         "--share=network",
-        "--filesystem=~/.writeas"
+        "--filesystem=~/.writeas:rw"
     ],
     "build-options": {
         "append-path": "/usr/lib/sdk/golang/bin/",
