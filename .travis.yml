@@ -27,10 +27,10 @@ matrix:
       - docker
     sudo: required
     before_install:
+      - ls
       - docker pull christopherdavis/elementary-flatpak-writeas:latest
-      - docker run -it -d --name flatpak christopherdavis/elementary-flatpak-writeas bash
+      - docker run -v writeas/writeas-gtk:/build/writeas/writeas-gtk -it -d --name flatpak christopherdavis/elementary-flatpak-writeas bash
     addons: []
     install: []
     script:
-      - docker exec flatpak ls
-      - docker exec flatpak flatpak-builder --repo=repo app flatpak/com.abunchtell.WriteAsDesktop.json
+      - docker exec flatpak flatpak-builder --repo=repo app /build/writeas/writeas-gtk/flatpak/com.abunchtell.WriteAsDesktop.json
