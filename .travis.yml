@@ -1,27 +1,29 @@
 ---
 
-language: node_js
-
-node_js:
-  - lts/*
-
-sudo: required
-
-services:
-  - docker
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - libstdc++-5-dev
-
-install:
-  - npm i -g @elementaryos/houston
-
-script:
-  - houston ci
-
-notifications:
-  email: false
+jobs:
+  - stage: "Elementary"
+    language: node_js
+    node_js:
+      - lts/*
+    sudo: required
+    services:
+      - docker
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - libstdc++-5-dev
+    install:
+      - npm i -g @elementaryos/houston
+    script:
+      - houston ci
+    notifications:
+      email: false
+  - stage: "Flatpak"
+    sudo: required
+    before_install:
+      - docker pull christopherdavis/elementary-flatpak-writeas:latest
+      - docker run -it -d --name flatpak christopherdavis/elementary-flatpak-writeas bash
+    script:
+      - docker exec flatpak flatpak-builder --repo=repo app flatpak/com.abunchtell.WriteAsDesktop.json
