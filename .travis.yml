@@ -1,11 +1,12 @@
 ---
 
-jobs:
-  - stage: "Elementary"
-    language: node_js
+matrix:
+  include:
+  - language: node_js
     node_js:
       - lts/*
     sudo: required
+    before_install: []
     services:
       - docker
     addons:
@@ -20,7 +21,6 @@ jobs:
       - houston ci
     notifications:
       email: false
-  - stage: "Flatpak"
     language: c
     services:
       - docker
@@ -28,5 +28,7 @@ jobs:
     before_install:
       - docker pull christopherdavis/elementary-flatpak-writeas:latest
       - docker run -it -d --name flatpak christopherdavis/elementary-flatpak-writeas bash
+    addons: []
+    install: []
     script:
       - docker exec flatpak flatpak-builder --repo=repo app flatpak/com.abunchtell.WriteAsDesktop.json
