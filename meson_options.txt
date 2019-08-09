@@ -1,1 +1,2 @@
 option('platform', type: 'combo', choices: ['default', 'elementary'], value: 'default')
+option('auto_build_cli', type: 'boolean', value: 'false')

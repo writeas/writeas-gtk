@@ -1,27 +1,44 @@
 ---
-
-language: node_js
-
-node_js:
-  - lts/*
-
-sudo: required
-
-services:
-  - docker
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - libstdc++-5-dev
-
-install:
-  - npm i -g @elementaryos/houston
-
-script:
-  - houston ci
+language: c
 
 notifications:
   email: false
+
+matrix:
+  include:
+  - language: node_js
+    node_js:
+      - lts/*
+    sudo: required
+    env: []
+    before_install: []
+    services:
+      - docker
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - libstdc++-5-dev
+    install:
+      - npm i -g @elementaryos/houston
+    script:
+      - houston ci
+    language: c
+    services:
+      - docker
+    sudo: required
+    env:
+      - MANIFEST_PATH=/build/writeas/writeas-gtk/flatpak/com.abunchtell.WriteAsDesktop.json
+    before_install:
+      - ls
+      - docker pull christopherdavis/elementary-flatpak-writeas:latest
+      - docker run --privileged -v "$(pwd)":/build/writeas/writeas-gtk -it -d --name flatpak christopherdavis/elementary-flatpak-writeas bash
+      - docker exec flatpak chmod +x /usr/bin/fusermount
+    addons: []
+    install: []
+    script:
+      - docker exec flatpak flatpak-builder --stop-at=writeas-gtk app ${MANIFEST_PATH}
+      - docker exec flatpak flatpak-builder --run app ${MANIFEST_PATH} meson _build /build/writeas/writeas-gtk --prefix=/app -Dauto_build_cli=true
+      - docker exec flatpak flatpak-builder --run app ${MANIFEST_PATH} ninja -C _build install
+      - docker exec flatpak flatpak-builder --finish-only app ${MANIFEST_PATH}

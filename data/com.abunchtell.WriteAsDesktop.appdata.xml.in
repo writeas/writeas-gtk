@@ -28,7 +28,7 @@
   <update_contact>hello@write.as</update_contact>
 
   <provides>
-    <binary>@app_id@</binary>
+    <binary>@exec@</binary>
   </provides>
 
   <screenshots>

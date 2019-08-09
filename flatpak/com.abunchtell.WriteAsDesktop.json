@@ -1,0 +1,110 @@
+{
+    "app-id": "com.abunchtell.WriteAsDesktop",
+    "base": "io.elementary.BaseApp",
+    "base-version": "juno",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.32",
+    "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.golang"
+    ],
+    "command": "writeas-gtk",
+    "finish-args": [
+        "--socket=wayland",
+        "--share=ipc",
+        "--socket=x11",
+        "--device=dri",
+        "--share=network",
+        "--filesystem=~/.writeas:rw"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/golang/bin/",
+        "build-args" : [
+            "--share=network"
+        ],
+        "env": {
+            "GOROOT": "/usr/lib/sdk/golang/"
+        }
+    },
+    "modules": [
+        {
+            "name": "gb",
+            "buildsystem": "simple",
+            "build-commands": [
+                "/usr/lib/sdk/golang/enable.sh; env GOPATH=\"$(pwd)\" go build github.com/constabulary/gb/cmd/gb",
+                "install -Dm0755 -t /app/bin gb"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pkg/errors.git",
+                    "dest": "src/github.com/pkg/errors"
+                },
+                {
+                    "type": "git",
+                    "url": "https://github.com/constabulary/gb.git",
+                    "dest": "src/github.com/constabulary/gb"
+                }
+            ]
+        },
+        {
+            "name": "gtksourceview3",
+            "config-opts" : [
+                "--disable-Werror"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/gtksourceview.git",
+                    "branch": "gnome-3-24"
+                }
+            ]
+        },
+        {
+            "name": "wl-clipboard",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/bugaevc/wl-clipboard.git"
+                }
+            ]
+        },
+        {
+            "name": "libXmu",
+            "config-opts": [
+                "--disable-static",
+                "--disable-docs"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.x.org/releases/individual/lib/libXmu-1.1.2.tar.bz2",
+                    "sha256": "756edc7c383254eef8b4e1b733c3bf1dc061b523c9f9833ac7058378b8349d0b"
+                }
+            ]
+        },
+        {
+            "name": "xclip",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/astrand/xclip.git"
+                }
+            ]
+        },
+        {
+            "name": "writeas-gtk",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dauto_build_cli=true"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/writeas/writeas-gtk.git"
+                }
+            ]
+        }
+    ]
+}

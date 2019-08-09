@@ -26,7 +26,7 @@ public class WriteAs.Application : Gtk.Application {
         Intl.setlocale(LocaleCategory.ALL, "");
         Intl.textdomain("write.as");
 
-        application_id = APP_ID + ".desktop";
+        application_id = APP_ID;
     }
 
     public override void activate() {
