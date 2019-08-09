@@ -1,6 +1,9 @@
 ---
 language: c
 
+notifications:
+  email: false
+
 matrix:
   include:
   - language: node_js
@@ -20,8 +23,6 @@ matrix:
       - npm i -g @elementaryos/houston
     script:
       - houston ci
-    notifications:
-      email: false
     language: c
     services:
       - docker
