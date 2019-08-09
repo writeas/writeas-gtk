@@ -32,4 +32,5 @@ matrix:
     addons: []
     install: []
     script:
+      - docker exec flatpak ls
       - docker exec flatpak flatpak-builder --repo=repo app flatpak/com.abunchtell.WriteAsDesktop.json
