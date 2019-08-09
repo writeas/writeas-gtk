@@ -22,6 +22,8 @@ jobs:
       email: false
   - stage: "Flatpak"
     language: c
+    services:
+      - docker
     sudo: required
     before_install:
       - docker pull christopherdavis/elementary-flatpak-writeas:latest
