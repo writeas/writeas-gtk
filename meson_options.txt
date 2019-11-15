@@ -1,0 +1,1 @@
+option('platform', type: 'combo', choices: ['default', 'elementary'], value: 'default')

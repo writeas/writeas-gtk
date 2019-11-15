@@ -19,7 +19,7 @@ override_dh_auto_clean:
 
 override_dh_auto_configure:
 	mkdir -p debian/build
-	cd debian/build && meson --prefix=/usr ../..
+	cd debian/build && meson --prefix=/usr ../.. -Dplatform=elementary
 
 override_dh_auto_build:
 	cd debian/build && ninja -v && ninja build

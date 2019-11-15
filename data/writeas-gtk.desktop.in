@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Write.as
+Comment=Publish a thought in seconds.
+Exec=@app_id@
+Icon=@app_id@
+Terminal=false
+MimeType=
+Categories=GTK;Office;Publishing;
+Keywords=blog;text;editor;publish;
+StartupNotify=true
+

@@ -1,4 +1,4 @@
-executable('com.github.writeas.writeas-gtk',
+executable(app_id,
     'application.vala',
     'window.vala',
     'Granite/Accels.vala',

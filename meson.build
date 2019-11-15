@@ -1,13 +1,22 @@
 project('com.github.writeas.writeas-gtk', 'vala', 'c',
     version: '1.0.2',
     license: 'GPL',
-    meson_version: '>=0.40.1'
 )
 
 i18n = import('i18n')
+
+build_platform = get_option('platform')
+if build_platform == 'elementary'
+  app_id = 'com.github.writeas.writeas-gtk'
+else
+  app_id = 'writeas-gtk'
+endif
+
 conf = configuration_data()
-conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
-configure_file(output: 'config.h', configuration: conf)
+conf.set_quoted('GETTEXT_PACKAGE', app_id)
+conf.set_quoted('APP_ID', app_id)
+conf.set_quoted('BUILD_PLATFORM', build_platform)
+config_h = configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
