@@ -1,15 +1,15 @@
 # French translations for extra package.
 # Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the extra package.
-# NathanBnm, 2019.
+# Nathan Bonnemains (@NathanBnm), 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 14:48+0200\n"
+"POT-Creation-Date: 2020-05-01 14:51+0200\n"
 "PO-Revision-Date: 2019-03-30 18:20+0100\n"
-"Last-Translator: NathanBnm\n"
+"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: Français\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgid ""
 msgstr ""
 "Write.as est une simple application d'écriture et de publication. Il n'y a "
 "pas d'inscription — ouvrez simplement l'application, écrivez quelque-chose, "
-"et publiez."
+"et publiez-le."
 
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:11
 msgid ""
@@ -78,7 +78,7 @@ msgid ""
 "you're finished"
 msgstr ""
 "Travaillez sur un brouillon local, puis publiez ou enregistrez le en tant "
-"que fichier quand c'est terminé"
+"que fichier lorsqu'il est terminé"
 
 #: data/com.github.writeas.writeas-gtk.appdata.xml.in:17
 msgid "Choose from three different fonts: serif, sans-serif, or monospace"
