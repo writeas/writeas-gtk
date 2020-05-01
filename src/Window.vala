@@ -82,7 +82,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         stdout.printf("writeas-gtk v%s\n", version);
 
         set_application(app);
-        icon_name = APP_ID;
+        icon_name = "com.github.writeas.writeas-gtk";
         init_folder();
         try {
             open_file(draft_file());
@@ -135,10 +135,7 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
         header.show_close_button = true;
         set_titlebar(header);
 
-        var icon_size = Gtk.IconSize.SMALL_TOOLBAR;
-        if (BUILD_PLATFORM == "elementary") {
-            icon_size = Gtk.IconSize.LARGE_TOOLBAR;
-        }
+        var icon_size = Gtk.IconSize.LARGE_TOOLBAR;
 
         var publish_button = new Gtk.Button.from_icon_name("document-send",
             icon_size);
