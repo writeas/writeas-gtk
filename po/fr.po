@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.writeas.writeas-gtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-18 14:21+0200\n"
+"POT-Creation-Date: 2020-05-01 14:48+0200\n"
 "PO-Revision-Date: 2019-03-30 18:20+0100\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: Français\n"
@@ -24,43 +24,43 @@ msgid_plural "%i words"
 msgstr[0] "%i mot"
 msgstr[1] "%i mots"
 
-#: src/window.vala:142
+#: src/window.vala:147
 msgid "Publish to Write.as on the web"
 msgstr "Publier vers Write.as sur le web"
 
-#: src/window.vala:152
+#: src/window.vala:157
 msgid "Light theme"
 msgstr "Thème clair"
 
-#: src/window.vala:153
+#: src/window.vala:158
 msgid "Dark theme"
 msgstr "Thème sombre"
 
-#: src/window.vala:156
+#: src/window.vala:161
 msgid "Toggle light/dark theme"
 msgstr "Basculer en mode clair/sombre"
 
-#: src/window.vala:170
+#: src/window.vala:175
 msgid "Change document font"
 msgstr "Modifier la police du document"
 
-#: src/window.vala:175
+#: src/window.vala:180
 msgid "Serif"
 msgstr "Serif"
 
-#: src/window.vala:176
+#: src/window.vala:181
 msgid "Sans-serif"
 msgstr "Sans-serif"
 
-#: src/window.vala:178
+#: src/window.vala:183
 msgid "Monospace"
 msgstr "Monospace"
 
-#: src/window.vala:372
+#: src/window.vala:377
 msgid "Save as"
 msgstr "Enregistrer sous"
 
-#: src/window.vala:385
+#: src/window.vala:390
 msgid "Cancel"
 msgstr "Annuler"
 

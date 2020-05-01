@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.writeas.writeas-gtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-18 14:21+0200\n"
+"POT-Creation-Date: 2020-05-01 14:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,43 +25,43 @@ msgid_plural "%i words"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/window.vala:142
+#: src/window.vala:147
 msgid "Publish to Write.as on the web"
 msgstr ""
 
-#: src/window.vala:152
+#: src/window.vala:157
 msgid "Light theme"
 msgstr ""
 
-#: src/window.vala:153
+#: src/window.vala:158
 msgid "Dark theme"
 msgstr ""
 
-#: src/window.vala:156
+#: src/window.vala:161
 msgid "Toggle light/dark theme"
 msgstr ""
 
-#: src/window.vala:170
+#: src/window.vala:175
 msgid "Change document font"
 msgstr ""
 
-#: src/window.vala:175
+#: src/window.vala:180
 msgid "Serif"
 msgstr ""
 
-#: src/window.vala:176
+#: src/window.vala:181
 msgid "Sans-serif"
 msgstr ""
 
-#: src/window.vala:178
+#: src/window.vala:183
 msgid "Monospace"
 msgstr ""
 
-#: src/window.vala:372
+#: src/window.vala:377
 msgid "Save as"
 msgstr ""
 
-#: src/window.vala:385
+#: src/window.vala:390
 msgid "Cancel"
 msgstr ""
 
