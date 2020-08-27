@@ -17,9 +17,20 @@ configure_file(
   configuration: data_conf,
   install_dir: join_paths(get_option('datadir'), 'applications')
 )
-configure_file(
+
+appdata = configure_file(
   input: 'com.abunchtell.WriteAsDesktop.appdata.xml.in',
   output: '@0@.appdata.xml'.format(app_id),
   configuration: data_conf,
   install_dir: join_paths(get_option('datadir'), 'metainfo')
 )
+
+appstream_util = find_program('appstream-util', required: false)
+if appstream_util.found()
+  test(
+    'validate-appdata', appstream_util,
+    args: [
+     'validate-relax', '--nonet', appdata
+    ]
+  )
+endif
