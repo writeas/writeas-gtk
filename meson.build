@@ -1,35 +1,43 @@
-project(
+# Project name, programming language and version
+project (
     'com.github.writeas.writeas-gtk',
-    'vala', 'c',
+    'c', 'vala',
     version: '1.0.2',
-    license: 'GPL-3.0',
 )
 
-i18n = import('i18n')
 
-add_project_arguments(
-    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+# GNOME module
+gnome = import ('gnome')
+
+# Translation module
+i18n = import ('i18n')
+
+
+# Project arguments
+add_project_arguments (
+    '-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name ()),
     language: 'c'
 )
 
+# Listing dependencies
 dependencies = [
-    dependency('gtk+-3.0'),
-    dependency('gtksourceview-3.0')
+    dependency ('gtk+-3.0'),
+    dependency ('gtksourceview-3.0')
 ]
 
-subdir('src')
+subdir ('src')
 
-executable(
-    meson.project_name(),
+# Define executable
+executable (
+    meson.project_name (),
     sources,
     dependencies: dependencies,
     install: true
 )
 
-subdir('data')
-subdir('po')
+subdir ('data')
+subdir ('po')
 
-subdir('fonts/lora')
+subdir ('fonts/lora')
 
-meson.add_install_script('meson/post_install.py')
-
+meson.add_install_script ('meson/post_install.py')

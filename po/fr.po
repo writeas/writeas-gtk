@@ -1,68 +1,21 @@
 # French translations for com.github.writeas.writeas-gtk package.
-# Copyright (C) 2019 THE com.github.writeas.writeas-gtk'S COPYRIGHT HOLDER
+# Copyright (C) 2021 THE com.github.writeas.writeas-gtk'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.writeas.writeas-gtk package.
-# Nathan Bonnemains (@NathanBnm), 2019.
+# Nathan Bonnemains (@NathanBnm), 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.writeas.writeas-gtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 14:51+0200\n"
-"PO-Revision-Date: 2019-03-30 18:20+0100\n"
+"POT-Creation-Date: 2021-11-19 15:58+0100\n"
+"PO-Revision-Date: 2021-11-19 15:53+0100\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
-"Language-Team: Français\n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: src/window.vala:56
-#, c-format
-msgid "%i word"
-msgid_plural "%i words"
-msgstr[0] "%i mot"
-msgstr[1] "%i mots"
-
-#: src/window.vala:147
-msgid "Publish to Write.as on the web"
-msgstr "Publier vers Write.as sur le Web"
-
-#: src/window.vala:157
-msgid "Light theme"
-msgstr "Thème clair"
-
-#: src/window.vala:158
-msgid "Dark theme"
-msgstr "Thème sombre"
-
-#: src/window.vala:161
-msgid "Toggle light/dark theme"
-msgstr "Basculer le thème clair/sombre"
-
-#: src/window.vala:175
-msgid "Change document font"
-msgstr "Modifier la police du document"
-
-#: src/window.vala:180
-msgid "Serif"
-msgstr "Serif"
-
-#: src/window.vala:181
-msgid "Sans-serif"
-msgstr "Sans-serif"
-
-#: src/window.vala:183
-msgid "Monospace"
-msgstr "Monospace"
-
-#: src/window.vala:377
-msgid "Save as"
-msgstr "Enregistrer sous"
-
-#: src/window.vala:390
-msgid "Cancel"
-msgstr "Annuler"
 
 #: src/Granite/Accels.vala:42
 msgid "Shift"
@@ -94,3 +47,50 @@ msgstr "Entrée"
 #: src/Granite/Accels.vala:124
 msgid ", "
 msgstr ", "
+
+#: src/Window.vala:56
+#, c-format
+msgid "%i word"
+msgid_plural "%i words"
+msgstr[0] "%i mot"
+msgstr[1] "%i mots"
+
+#: src/Window.vala:144
+msgid "Publish to Write.as on the web"
+msgstr "Publier vers Write.as sur le Web"
+
+#: src/Window.vala:154
+msgid "Light theme"
+msgstr "Thème clair"
+
+#: src/Window.vala:155
+msgid "Dark theme"
+msgstr "Thème sombre"
+
+#: src/Window.vala:158
+msgid "Toggle light/dark theme"
+msgstr "Basculer entre le thème clair/sombre"
+
+#: src/Window.vala:172
+msgid "Change document font"
+msgstr "Modifier la police du document"
+
+#: src/Window.vala:177
+msgid "Serif"
+msgstr "Serif"
+
+#: src/Window.vala:178
+msgid "Sans-serif"
+msgstr "Sans-serif"
+
+#: src/Window.vala:180
+msgid "Monospace"
+msgstr "Monospace"
+
+#: src/Window.vala:374
+msgid "Save as"
+msgstr "Enregistrer sous"
+
+#: src/Window.vala:387
+msgid "Cancel"
+msgstr "Annuler"

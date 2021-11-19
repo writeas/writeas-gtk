@@ -50,8 +50,8 @@ public class WriteAs.MainWindow : Gtk.ApplicationWindow {
 
         size_allocate.connect((_) => {adjust_text_style();});
         canvas.event_after.connect((evt) => {
-            // TODO This word count algorithm may be quite naive
-            //      and could do improvement.
+            // TODO This word count algorithm may be quite naive and could do improvement.
+            
             var word_count = canvas.buffer.text.split(" ").length;
             header.subtitle = ngettext("%i word","%i words",word_count).printf(word_count);
 

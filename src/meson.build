@@ -1,6 +1,7 @@
-sources = files(
-    'Application.vala',
-    'Window.vala',
+sources = files (
     'Granite/Accels.vala',
-    'Granite/ModeSwitch.vala'
+    'Granite/ModeSwitch.vala',
+
+    'Application.vala',
+    'Window.vala'
 )
