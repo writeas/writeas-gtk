@@ -65,12 +65,12 @@ public static string accel_to_string (string accel) {
             break;
         case Gdk.Key.minus:
         case Gdk.Key.KP_Subtract:
-            ///TRANSLATORS: This is a non-symbol representation of the "-" key
+            // TRANSLATORS: This is a non-symbol representation of the "-" key
             arr += _("Minus");
             break;
         case Gdk.Key.KP_Add:
         case Gdk.Key.plus:
-            ///TRANSLATORS: This is a non-symbol representation of the "+" key
+            // TRANSLATORS: This is a non-symbol representation of the "+" key
             arr += _("Plus");
             break;
         case Gdk.Key.KP_Enter:
@@ -120,7 +120,7 @@ public static string markup_accel_tooltip (string[]? accels, string? description
         }
 
         if (unique_accels.length > 0) {
-            ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+            // TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
             var accel_label = string.joinv (_(", "), unique_accels);
 
             var accel_markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);

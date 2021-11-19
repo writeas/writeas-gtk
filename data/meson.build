@@ -1,24 +1,32 @@
+# Install icons
 icon_sizes = ['16', '24', '32', '48', '64', '128']
 
 foreach i : icon_sizes
-    install_data(
-        join_paths('icons', i, meson.project_name() + '.png'),
-        install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', i + 'x' + i, 'apps'),
-        rename: '@0@.png'.format(app_id)
+    install_data (
+        join_paths ('icons', i, meson.project_name () + '.png'),
+        install_dir: join_paths (get_option ('datadir'), 'icons', 'hicolor', i + 'x' + i, 'apps')
+    )
+    install_data (
+        join_paths ('icons', i, meson.project_name () + '.png'),
+        install_dir: join_paths (get_option ('datadir'), 'icons', 'hicolor', i + 'x' + i + '@2', 'apps')
     )
 endforeach
 
-data_conf = configuration_data()
-data_conf.set('app_id', app_id)
-configure_file(
-  input: 'writeas-gtk.desktop.in',
-  output: '@0@.desktop'.format(app_id),
-  configuration: data_conf,
-  install_dir: join_paths(get_option('datadir'), 'applications')
+# Translate and install our .desktop file so the Applications Menu will see it
+i18n.merge_file (
+    input: meson.project_name () + '.desktop.in',
+    output: meson.project_name () + '.desktop',
+    po_dir: join_paths (meson.source_root (), 'po', 'extra'),
+    type: 'desktop',
+    install: true,
+    install_dir: join_paths (get_option ('datadir'), 'applications')
 )
-configure_file(
-  input: 'writeas-gtk.appdata.xml.in',
-  output: '@0@.appdata.xml'.format(app_id),
-  configuration: data_conf,
-  install_dir: join_paths(get_option('datadir'), 'metainfo')
+
+# Translate and install our .appdata.xml file so AppCenter will see it
+i18n.merge_file (
+    input: meson.project_name () + '.appdata.xml.in',
+    output: meson.project_name () + '.appdata.xml',
+    po_dir: join_paths (meson.source_root (), 'po', 'extra'),
+    install: true,
+    install_dir: join_paths (get_option ('datadir'), 'metainfo')
 )

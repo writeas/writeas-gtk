@@ -1,0 +1,155 @@
+# French translations for extra package.
+# Copyright (C) 2021 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Nathan Bonnemains (@NathanBnm), 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-19 15:58+0100\n"
+"PO-Revision-Date: 2021-11-19 15:53+0100\n"
+"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: data/com.github.writeas.writeas-gtk.desktop.in:4
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:6
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:24
+msgid "Write.as"
+msgstr "Write.as"
+
+#: data/com.github.writeas.writeas-gtk.desktop.in:5
+msgid "Publish a thought in seconds."
+msgstr "Publiez vos pensées en quelques secondes."
+
+#: data/com.github.writeas.writeas-gtk.desktop.in:7
+msgid "com.github.writeas.writeas-gtk"
+msgstr "com.github.writeas.writeas-gtk"
+
+#: data/com.github.writeas.writeas-gtk.desktop.in:11
+msgid "blog;text;editor;publish;"
+msgstr "blog;texte;éditeur;publier;"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:7
+msgid "Publish a thought in seconds"
+msgstr "Publiez vos pensées en quelques secondes"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:10
+msgid ""
+"Write.as is a simple writing tool and publishing platform. There's no sign "
+"up — just open the app, write something, and publish."
+msgstr ""
+"Write.as est une simple application d'écriture et de publication. Il n'y a "
+"pas d'inscription — ouvrez simplement l'application, écrivez quelque-chose, "
+"et publiez-le."
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:11
+msgid ""
+"Published posts get a secret, unique link on Write.as that you can share "
+"with anyone, or keep to yourself. In either case, you remain private because "
+"we don't collect personal information about you."
+msgstr ""
+"Les publications possèdent un lien unique et secret sur Write.as que vous "
+"pouvez partager avec qui vous souhaitez, ou bien le garder pour vous. Dans "
+"tous les cas, cela reste privé car nous ne collectons pas d'informations "
+"personnelles sur vous."
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:13
+msgid "Simple, distraction-free editor built for your words"
+msgstr "Un éditeur simple, sans distraction construit pour vos écritures"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:14
+msgid "Instantly launches to a blank page or your last draft"
+msgstr ""
+"Lancement instantanné sur une page blanche ou bien votre dernier brouillon"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:15
+msgid "Writing automatically saves as you type"
+msgstr "Enregistrement automatique au fur et à mesure que vous tapez"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:16
+msgid ""
+"Work on a single local draft, then publish or save as another file when "
+"you're finished"
+msgstr ""
+"Travaillez sur un brouillon local, puis publiez ou enregistrez le en tant "
+"que fichier lorsqu'il est terminé"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:17
+msgid "Choose from three different fonts: serif, sans-serif, or monospace"
+msgstr ""
+"Choisissez parmi trois différentes polices : serif, sans-serif ou monospace"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:18
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:103
+msgid "Dark mode on platforms that support it"
+msgstr "Thème sombre sur les plateformes qui le supportent"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:19
+msgid "Publish to Write.as and share your post"
+msgstr "Publiez sur Write.as et partagez votre publication"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:20
+msgid "Manage published posts with the built-in command-line interface"
+msgstr ""
+"Gérez vos publications publiées avec l'interface en ligne de commande incluse"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:36
+msgid "The Write.as editor."
+msgstr "L'éditeur Write.as"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:40
+msgid "The Write.as editor in dark mode."
+msgstr "L'éditeur Write.as avec le thème sombre"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:82
+msgid "This update fixes a few minor visual issues."
+msgstr "Cette mise à jour corrige quelques problèmes graphiques mineurs."
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:84
+msgid "Fix black bar that appears in the editor on elementary OS"
+msgstr ""
+"Correction de la barre noire qui apparaît dans l'éditeur sur elementary OS"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:85
+msgid "Fix currently-selected font not reflected in menu when app first loads"
+msgstr ""
+"Correction de la police sélectionnée qui ne s'appliquait pas dans le menu au "
+"premier chargement de l'application"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:91
+msgid "GTK updates and fixes."
+msgstr "Mise à jour de GTK et corrections."
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:93
+msgid "Fix fonts, padding, cursor color"
+msgstr "Correction des polices, des marges et de la couleur du curseur"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:94
+msgid "Increase the default font size"
+msgstr "Augmentation de la taille de la police par défaut"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:100
+msgid "Initial release"
+msgstr "Version initiale"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:102
+msgid "Auto-saving single draft"
+msgstr "Enregistrement automatique d'un simple brouillon"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:104
+msgid "Choose between three fonts"
+msgstr "Choisissez parmi tois polices"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:105
+msgid "Save draft as another file"
+msgstr "Enregisrez le brouillon dans un autre fichier"
+
+#: data/com.github.writeas.writeas-gtk.appdata.xml.in:106
+msgid "Publish anonymously to Write.as"
+msgstr "Publiez anonymement sur Write.as"

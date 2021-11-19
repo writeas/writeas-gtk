@@ -2,8 +2,8 @@
 Type=Application
 Name=Write.as
 Comment=Publish a thought in seconds.
-Exec=@app_id@
-Icon=@app_id@
+Exec=com.github.writeas.writeas-gtk
+Icon=com.github.writeas.writeas-gtk
 Terminal=false
 MimeType=
 Categories=GTK;Office;Publishing;

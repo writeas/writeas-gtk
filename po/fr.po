@@ -1,0 +1,96 @@
+# French translations for com.github.writeas.writeas-gtk package.
+# Copyright (C) 2021 THE com.github.writeas.writeas-gtk'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.writeas.writeas-gtk package.
+# Nathan Bonnemains (@NathanBnm), 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.writeas.writeas-gtk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-19 15:58+0100\n"
+"PO-Revision-Date: 2021-11-19 15:53+0100\n"
+"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/Granite/Accels.vala:42
+msgid "Shift"
+msgstr "Maj"
+
+#: src/Granite/Accels.vala:46
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: src/Granite/Accels.vala:50
+msgid "Alt"
+msgstr "Alt"
+
+#. TRANSLATORS: This is a non-symbol representation of the "-" key
+#: src/Granite/Accels.vala:69
+msgid "Minus"
+msgstr "Moins"
+
+#. TRANSLATORS: This is a non-symbol representation of the "+" key
+#: src/Granite/Accels.vala:74
+msgid "Plus"
+msgstr "Plus"
+
+#: src/Granite/Accels.vala:78
+msgid "Enter"
+msgstr "Entrée"
+
+#. TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+#: src/Granite/Accels.vala:124
+msgid ", "
+msgstr ", "
+
+#: src/Window.vala:56
+#, c-format
+msgid "%i word"
+msgid_plural "%i words"
+msgstr[0] "%i mot"
+msgstr[1] "%i mots"
+
+#: src/Window.vala:144
+msgid "Publish to Write.as on the web"
+msgstr "Publier vers Write.as sur le Web"
+
+#: src/Window.vala:154
+msgid "Light theme"
+msgstr "Thème clair"
+
+#: src/Window.vala:155
+msgid "Dark theme"
+msgstr "Thème sombre"
+
+#: src/Window.vala:158
+msgid "Toggle light/dark theme"
+msgstr "Basculer entre le thème clair/sombre"
+
+#: src/Window.vala:172
+msgid "Change document font"
+msgstr "Modifier la police du document"
+
+#: src/Window.vala:177
+msgid "Serif"
+msgstr "Serif"
+
+#: src/Window.vala:178
+msgid "Sans-serif"
+msgstr "Sans-serif"
+
+#: src/Window.vala:180
+msgid "Monospace"
+msgstr "Monospace"
+
+#: src/Window.vala:374
+msgid "Save as"
+msgstr "Enregistrer sous"
+
+#: src/Window.vala:387
+msgid "Cancel"
+msgstr "Annuler"
