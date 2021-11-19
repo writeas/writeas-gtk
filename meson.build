@@ -25,6 +25,8 @@ dependencies = [
     dependency ('gtksourceview-3.0')
 ]
 
+run_target('build', command: 'meson/build-cli.sh')
+
 subdir ('src')
 
 # Define executable
